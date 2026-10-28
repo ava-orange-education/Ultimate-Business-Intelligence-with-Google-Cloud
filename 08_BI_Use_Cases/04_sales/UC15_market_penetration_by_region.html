@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NordLeaf — Market Penetration by Region</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #F0F4F1; color: #1a1a1a; }
+    header {
+      background: #1B4332; color: #fff; padding: 0 32px;
+      display: flex; align-items: center; gap: 14px; height: 64px;
+    }
+    header .brand { display: flex; align-items: center; gap: 12px; }
+    header h1 { font-size: 1.15rem; font-weight: 600; letter-spacing: 0.01em; }
+    header .domain-badge {
+      margin-left: auto; background: #40916C; color: #fff;
+      font-size: 0.72rem; font-weight: 600; padding: 4px 10px;
+      border-radius: 12px; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    header .priority { background: #74C69D; color: #1B4332; font-size: 0.72rem; font-weight: 700; padding: 4px 10px; border-radius: 12px; margin-left: 8px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 28px 24px 40px; }
+    .page-title { font-size: 1.45rem; font-weight: 700; color: #1B4332; margin-bottom: 6px; }
+    .page-subtitle { font-size: 0.9rem; color: #555; margin-bottom: 28px; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+    .kpi-card {
+      background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 20px 22px; display: flex; flex-direction: column; gap: 6px;
+    }
+    .kpi-label { font-size: 0.78rem; color: #6b7280; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+    .kpi-value { font-size: 2rem; font-weight: 700; color: #1B4332; line-height: 1; }
+    .kpi-sub { font-size: 0.8rem; color: #888; }
+    .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+    .chart-card {
+      background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 22px 24px;
+    }
+    .chart-card.full-width { grid-column: 1 / -1; }
+    .chart-title { font-size: 0.95rem; font-weight: 700; color: #1B4332; margin-bottom: 4px; }
+    .chart-subtitle { font-size: 0.8rem; color: #888; margin-bottom: 16px; }
+    .chart-wrap { position: relative; height: 400px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    thead tr { background: #1B4332; color: #fff; }
+    thead th { padding: 10px 14px; text-align: left; font-weight: 600; font-size: 0.8rem; }
+    tbody tr:nth-child(even) { background: #f7faf8; }
+    tbody td { padding: 9px 14px; border-bottom: 1px solid #e5ede8; }
+    .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 700; }
+    .badge-high   { background: #D1FAE5; color: #065F46; }
+    .badge-medium { background: #FEF3C7; color: #92400E; }
+    .badge-low    { background: #FEE2E2; color: #991B1B; }
+    .flag-icon { color: #E67E22; font-weight: 700; }
+    footer {
+      text-align: center; font-size: 0.75rem; color: #6b7280;
+      padding: 20px; border-top: 1px solid #d1d9d4; margin-top: 16px;
+      background: #F0F4F1;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+      <circle cx="18" cy="18" r="18" fill="#40916C"/>
+      <path d="M18 6 C10 10 8 20 18 30 C28 20 26 10 18 6Z" fill="#D8F3DC"/>
+      <line x1="18" y1="30" x2="18" y2="14" stroke="#1B4332" stroke-width="1.5"/>
+      <line x1="18" y1="22" x2="13" y2="18" stroke="#1B4332" stroke-width="1"/>
+      <line x1="18" y1="19" x2="23" y2="15" stroke="#1B4332" stroke-width="1"/>
+    </svg>
+    <h1>NordLeaf Analytics — Market Penetration by Region</h1>
+  </div>
+  <span class="domain-badge">Sales</span>
+  <span class="priority">P2</span>
+</header>
+
+<div class="container">
+  <div class="page-title">Market Penetration by Region</div>
+  <div class="page-subtitle">UC-15 &nbsp;|&nbsp; Revenue distribution and growth trends across geographic markets &nbsp;|&nbsp; Q1 2023 – Q1 2024</div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Top Region</div>
+      <div class="kpi-value">DACH</div>
+      <div class="kpi-sub">€2.4M revenue</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">YoY Growth</div>
+      <div class="kpi-value">+8.3%</div>
+      <div class="kpi-sub">Blended across all regions</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Regions Covered</div>
+      <div class="kpi-value">5</div>
+      <div class="kpi-sub">Active market regions</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Untapped Flags</div>
+      <div class="kpi-value" style="color:#E67E22;">2</div>
+      <div class="kpi-sub">Expansion opportunities</div>
+    </div>
+  </div>
+
+  <div class="charts-grid">
+    <div class="chart-card">
+      <div class="chart-title">Revenue by Region with YoY Growth</div>
+      <div class="chart-subtitle">Bar size = annual revenue (€K) &nbsp;|&nbsp; Label = YoY growth &nbsp;|&nbsp; Color = tier</div>
+      <div class="chart-wrap">
+        <canvas id="regionRevenueChart"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">Revenue Trend by Region (Quarterly)</div>
+      <div class="chart-subtitle">Q1 2023 – Q1 2024 &nbsp;|&nbsp; Revenue in €K</div>
+      <div class="chart-wrap">
+        <canvas id="regionTrendChart"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-card full-width">
+      <div class="chart-title">Market Share &amp; Expansion Opportunity — Region &times; Product Type</div>
+      <div class="chart-subtitle">Share % of NordLeaf revenue within each region &amp; product. Flag = expansion opportunity identified.</div>
+      <div style="overflow-x:auto; margin-top:8px;">
+        <table>
+          <thead>
+            <tr>
+              <th>Region</th>
+              <th>Newsprint</th>
+              <th>Coated</th>
+              <th>Uncoated</th>
+              <th>Specialty</th>
+              <th>Kraft</th>
+              <th>Tier</th>
+              <th>Opportunity</th>
+            </tr>
+          </thead>
+          <tbody id="marketShareBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>NordLeaf Analytics Platform &middot; Powered by BigQuery &amp; Looker Studio &middot; Confidential</footer>
+
+<script>
+// ── Chart 1: Horizontal Bar — Revenue by Region ───────────────────────────────
+(function() {
+  const labels  = ['Nordic','DACH','UK & Ireland','France & Benelux','Baltics'];
+  const revenue = [2100, 2400, 1850, 1600, 950];
+  const growth  = ['+4%','+12%','+7%','+9%','+15%'];
+  // HIGH = dark green, MEDIUM = green, LOW = amber (by revenue tier)
+  const colors  = ['#2D6A4F','#1B4332','#40916C','#74C69D','#E67E22'];
+
+  new Chart(document.getElementById('regionRevenueChart'), {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Revenue (€K)',
+        data: revenue,
+        backgroundColor: colors,
+        borderRadius: 6,
+        barThickness: 40
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => ` €${ctx.raw.toLocaleString()}K`,
+            afterLabel: ctx => ` YoY Growth: ${growth[ctx.dataIndex]}`
+          }
+        }
+      },
+      scales: {
+        x: {
+          min: 0, max: 2800,
+          title: { display: true, text: 'Revenue (€K)', font: { size: 11 } },
+          grid: { color: '#e8eeea' },
+          ticks: { callback: v => '€' + v.toLocaleString() + 'K' }
+        },
+        y: { grid: { display: false } }
+      }
+    },
+    plugins: [{
+      id: 'growthLabels',
+      afterDatasetsDraw(chart) {
+        const { ctx, scales: { x, y } } = chart;
+        chart.data.datasets[0].data.forEach((val, i) => {
+          const xPos = x.getPixelForValue(val);
+          const yPos = y.getPixelForValue(i);
+          ctx.fillStyle = '#1B4332';
+          ctx.font = 'bold 11px Segoe UI, system-ui, sans-serif';
+          ctx.textAlign = 'left';
+          ctx.fillText(growth[i], xPos + 8, yPos + 4);
+        });
+      }
+    }]
+  });
+})();
+
+// ── Chart 2: Line — Revenue Trend by Region ───────────────────────────────────
+(function() {
+  const palette = ['#1B4332','#2D6A4F','#40916C','#74C69D','#E67E22'];
+  const datasets = [
+    { label: 'Nordic',           data: [490,510,530,550,540] },
+    { label: 'DACH',             data: [530,560,590,620,630] },
+    { label: 'UK & Ireland',     data: [430,445,460,480,485] },
+    { label: 'France & Benelux', data: [360,378,395,415,420] },
+    { label: 'Baltics',          data: [200,215,230,255,260] }
+  ].map((d, i) => ({
+    ...d,
+    borderColor: palette[i],
+    backgroundColor: palette[i],
+    pointBackgroundColor: palette[i],
+    pointRadius: 5,
+    borderWidth: 2.5,
+    tension: 0.35,
+    fill: false
+  }));
+
+  new Chart(document.getElementById('regionTrendChart'), {
+    type: 'line',
+    data: {
+      labels: ['Q1 2023','Q2 2023','Q3 2023','Q4 2023','Q1 2024'],
+      datasets
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'top', labels: { boxWidth: 12, font: { family: "'Segoe UI', system-ui" } } },
+        tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: €${ctx.raw}K` } }
+      },
+      scales: {
+        x: { grid: { color: '#e8eeea' } },
+        y: {
+          title: { display: true, text: 'Revenue (€K)', font: { size: 11 } },
+          grid: { color: '#e8eeea' },
+          ticks: { callback: v => '€' + v + 'K' }
+        }
+      }
+    }
+  });
+})();
+
+// ── Market Share Table ────────────────────────────────────────────────────────
+(function() {
+  const rows = [
+    { region:'Nordic',           shares:[28,22,31,15,24], tier:'HIGH',   opp:'Specialty expansion' },
+    { region:'DACH',             shares:[35,31,28,22,18], tier:'HIGH',   opp:'Kraft growth' },
+    { region:'UK & Ireland',     shares:[22,29,24,18,21], tier:'MEDIUM', opp:'Specialty & Kraft' },
+    { region:'France & Benelux', shares:[18,24,21,14,16], tier:'MEDIUM', opp:'Newsprint & Uncoated' },
+    { region:'Baltics',          shares:[12,14,11,9,15],  tier:'LOW',    opp:'All categories - untapped' }
+  ];
+  const tbody = document.getElementById('marketShareBody');
+  rows.forEach(r => {
+    const tierCls = r.tier==='HIGH' ? 'badge-high' : r.tier==='MEDIUM' ? 'badge-medium' : 'badge-low';
+    const isFlag = r.tier === 'LOW';
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="font-weight:600;">${r.region}</td>
+      ${r.shares.map(s => `<td style="text-align:center;">${s}%</td>`).join('')}
+      <td><span class="badge ${tierCls}">${r.tier}</span></td>
+      <td style="color:${isFlag ? '#E67E22' : '#2D6A4F'}; font-size:0.82rem;">${isFlag ? '&#9873; ' : ''}${r.opp}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+})();
+</script>
+</body>
+</html>

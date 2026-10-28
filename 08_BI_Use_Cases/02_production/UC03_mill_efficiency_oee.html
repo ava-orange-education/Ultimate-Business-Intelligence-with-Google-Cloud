@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mill Efficiency & OEE Dashboard — NordLeaf Analytics</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #F0F4F1; font-family: 'Segoe UI', system-ui, sans-serif; color: #1a1a1a; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 32px 24px; }
+    .kpi-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+    .kpi-card { background: #fff; border-radius: 10px; padding: 20px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); min-width: 160px; flex: 1; }
+    .kpi-label { color: #6B7280; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .kpi-value { font-size: 28px; font-weight: 700; color: #1B4332; }
+    .kpi-sub { font-size: 12px; color: #40916C; margin-top: 4px; }
+    .charts-row { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; margin-bottom: 28px; }
+    .card { background: #fff; border-radius: 10px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .card-title { font-size: 14px; font-weight: 600; color: #1B4332; margin-bottom: 4px; }
+    .card-subtitle { font-size: 11px; color: #6B7280; margin-bottom: 16px; }
+    .chart-wrap { position: relative; height: 400px; }
+    .ref-lines { display: flex; gap: 16px; margin-top: 10px; font-size: 11px; color: #6B7280; }
+    .ref-line-item { display: flex; align-items: center; gap: 5px; }
+    .ref-dot { width: 24px; height: 2px; }
+    table { width: 100%; border-collapse: collapse; }
+    thead th { background: #F0F4F1; color: #1B4332; font-size: 12px; text-transform: uppercase; letter-spacing: 0.8px; padding: 10px 14px; text-align: left; border-bottom: 2px solid #D8F3DC; }
+    tbody td { padding: 11px 14px; font-size: 13px; border-bottom: 1px solid #F0F4F1; color: #374151; }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover td { background: #F9FBF9; }
+    .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; }
+    .badge-green { background: #D1FAE5; color: #065F46; }
+    .badge-blue { background: #DBEAFE; color: #1E40AF; }
+    .badge-amber { background: #FEF3C7; color: #92400E; }
+    .badge-red { background: #FEE2E2; color: #991B1B; }
+    .badge-purple { background: #EDE9FE; color: #5B21B6; }
+    footer { text-align: center; padding: 20px; color: #6B7280; font-size: 12px; }
+    .section-gap { margin-bottom: 28px; }
+    .oee-pill { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<header style="background:#1B4332;padding:14px 32px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 6px rgba(0,0,0,0.3)">
+  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="18" cy="18" r="18" fill="#40916C"/>
+    <path d="M18 6 C10 10 8 20 18 30 C28 20 26 10 18 6Z" fill="#D8F3DC"/>
+    <line x1="18" y1="30" x2="18" y2="14" stroke="#1B4332" stroke-width="1.5"/>
+    <line x1="18" y1="22" x2="13" y2="18" stroke="#1B4332" stroke-width="1"/>
+    <line x1="18" y1="19" x2="23" y2="15" stroke="#1B4332" stroke-width="1"/>
+  </svg>
+  <div>
+    <div style="color:#D8F3DC;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500">NordLeaf Analytics</div>
+    <div style="color:#fff;font-size:18px;font-weight:700;line-height:1.2">Mill Efficiency &amp; OEE Dashboard</div>
+  </div>
+  <div style="margin-left:auto;color:#74C69D;font-size:12px">Last updated: 2024-01-15 06:00 EET</div>
+</header>
+
+<div class="container">
+
+  <!-- KPI Row -->
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-label">Avg OEE</div>
+      <div class="kpi-value">76.4%</div>
+      <div class="kpi-sub">▲ All mills, last 4 months</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Best Mill</div>
+      <div class="kpi-value">82.1%</div>
+      <div class="kpi-sub">▲ Tampere — Jan 2024</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">World Class</div>
+      <div class="kpi-value" style="font-size:20px;color:#6B7280">≥ 85%</div>
+      <div class="kpi-sub" style="color:#E67E22">No mill at benchmark yet</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Grade A %</div>
+      <div class="kpi-value">78.3%</div>
+      <div class="kpi-sub">▲ +1.4% vs prior period</div>
+    </div>
+  </div>
+
+  <!-- Charts Row -->
+  <div class="charts-row section-gap">
+    <div class="card">
+      <div class="card-title">OEE % per Mill — Last 4 Months</div>
+      <div class="card-subtitle">Dashed lines: World Class (85%) and Poor (&lt;65%) thresholds</div>
+      <div class="chart-wrap">
+        <canvas id="chartOEE"></canvas>
+      </div>
+      <div class="ref-lines">
+        <div class="ref-line-item">
+          <div class="ref-dot" style="background:#27AE60;border-top:2px dashed #27AE60"></div>
+          <span>World Class ≥85%</span>
+        </div>
+        <div class="ref-line-item">
+          <div class="ref-dot" style="background:#C0392B;border-top:2px dashed #C0392B"></div>
+          <span>Poor &lt;65%</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Quality Grade Distribution by Mill</div>
+      <div class="card-subtitle">Stacked % — Grade A / B / C</div>
+      <div class="chart-wrap">
+        <canvas id="chartGrade"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shift Performance Table -->
+  <div class="card section-gap">
+    <div class="card-title">Shift Performance — OEE Tier by Mill &amp; Shift (January 2024)</div>
+    <div style="font-size:11px;color:#6B7280;margin-bottom:14px">
+      Tiers: 
+      <span class="badge badge-blue" style="font-size:10px">WORLD CLASS ≥85%</span>&nbsp;
+      <span class="badge badge-green" style="font-size:10px">GOOD 75–84%</span>&nbsp;
+      <span class="badge badge-amber" style="font-size:10px">AVERAGE 65–74%</span>&nbsp;
+      <span class="badge badge-red" style="font-size:10px">POOR &lt;65%</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Mill</th>
+          <th>Morning Shift</th>
+          <th>OEE</th>
+          <th>Afternoon Shift</th>
+          <th>OEE</th>
+          <th>Night Shift</th>
+          <th>OEE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Tampere</strong></td>
+          <td><span class="badge badge-blue">WORLD CLASS</span></td>
+          <td>85.2%</td>
+          <td><span class="badge badge-green">GOOD</span></td>
+          <td>81.4%</td>
+          <td><span class="badge badge-green">GOOD</span></td>
+          <td>79.7%</td>
+        </tr>
+        <tr>
+          <td><strong>Oulu</strong></td>
+          <td><span class="badge badge-green">GOOD</span></td>
+          <td>78.3%</td>
+          <td><span class="badge badge-green">GOOD</span></td>
+          <td>76.5%</td>
+          <td><span class="badge badge-amber">AVERAGE</span></td>
+          <td>72.1%</td>
+        </tr>
+        <tr>
+          <td><strong>Turku</strong></td>
+          <td><span class="badge badge-green">GOOD</span></td>
+          <td>75.8%</td>
+          <td><span class="badge badge-amber">AVERAGE</span></td>
+          <td>73.2%</td>
+          <td><span class="badge badge-amber">AVERAGE</span></td>
+          <td>68.9%</td>
+        </tr>
+        <tr>
+          <td><strong>Espoo</strong></td>
+          <td><span class="badge badge-blue">WORLD CLASS</span></td>
+          <td>86.0%</td>
+          <td><span class="badge badge-green">GOOD</span></td>
+          <td>80.2%</td>
+          <td><span class="badge badge-green">GOOD</span></td>
+          <td>77.8%</td>
+        </tr>
+        <tr>
+          <td><strong>Jyväskylä</strong></td>
+          <td><span class="badge badge-green">GOOD</span></td>
+          <td>76.4%</td>
+          <td><span class="badge badge-amber">AVERAGE</span></td>
+          <td>74.1%</td>
+          <td><span class="badge badge-amber">AVERAGE</span></td>
+          <td>70.3%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<footer>NordLeaf Analytics Platform · Powered by BigQuery &amp; Looker Studio · Confidential</footer>
+
+<script>
+  const MONTHS = ['Oct 2023', 'Nov 2023', 'Dec 2023', 'Jan 2024'];
+  const MILLS = ['Tampere', 'Oulu', 'Turku', 'Espoo', 'Jyväskylä'];
+  const OEE_DATA = {
+    Tampere:    [80, 81, 82, 82],
+    Oulu:       [74, 75, 76, 77],
+    Turku:      [71, 73, 72, 74],
+    Espoo:      [79, 78, 80, 81],
+    Jyväskylä:  [72, 73, 74, 75]
+  };
+  const PALETTE = ['#1B4332','#2D6A4F','#40916C','#74C69D','#B7E4C7'];
+
+  // Chart 1: Grouped Bar OEE
+  const ctx1 = document.getElementById('chartOEE').getContext('2d');
+
+  // Reference line plugin
+  const refLinePlugin = {
+    id: 'refLines',
+    afterDraw(chart) {
+      const { ctx, chartArea: { left, right }, scales: { y } } = chart;
+      const lines = [
+        { value: 85, color: '#27AE60', label: '85%' },
+        { value: 65, color: '#C0392B', label: '65%' }
+      ];
+      lines.forEach(({ value, color, label }) => {
+        const yPos = y.getPixelForValue(value);
+        ctx.save();
+        ctx.setLineDash([6, 4]);
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 1.5;
+        ctx.globalAlpha = 0.7;
+        ctx.beginPath();
+        ctx.moveTo(left, yPos);
+        ctx.lineTo(right, yPos);
+        ctx.stroke();
+        ctx.restore();
+      });
+    }
+  };
+
+  new Chart(ctx1, {
+    type: 'bar',
+    plugins: [refLinePlugin],
+    data: {
+      labels: MONTHS,
+      datasets: MILLS.map((mill, i) => ({
+        label: mill,
+        data: OEE_DATA[mill],
+        backgroundColor: PALETTE[i],
+        borderRadius: 3,
+        barPercentage: 0.85,
+        categoryPercentage: 0.8
+      }))
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'top', labels: { font: { size: 12 }, color: '#374151' } },
+        tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y}%` } }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: '#6B7280' } },
+        y: {
+          min: 60,
+          max: 92,
+          grid: { color: '#F0F4F1' },
+          ticks: { color: '#6B7280', callback: v => v + '%' }
+        }
+      }
+    }
+  });
+
+  // Chart 2: Stacked % Grade A/B/C
+  const ctx2 = document.getElementById('chartGrade').getContext('2d');
+  const GRADE_DATA = {
+    Tampere:   { A: 78, B: 17, C: 5 },
+    Oulu:      { A: 72, B: 22, C: 6 },
+    Turku:     { A: 68, B: 24, C: 8 },
+    Espoo:     { A: 76, B: 19, C: 5 },
+    Jyväskylä: { A: 70, B: 23, C: 7 }
+  };
+  new Chart(ctx2, {
+    type: 'bar',
+    data: {
+      labels: MILLS,
+      datasets: [
+        {
+          label: 'Grade A',
+          data: MILLS.map(m => GRADE_DATA[m].A),
+          backgroundColor: '#1B4332',
+          borderRadius: 0
+        },
+        {
+          label: 'Grade B',
+          data: MILLS.map(m => GRADE_DATA[m].B),
+          backgroundColor: '#74C69D',
+          borderRadius: 0
+        },
+        {
+          label: 'Grade C',
+          data: MILLS.map(m => GRADE_DATA[m].C),
+          backgroundColor: '#C0392B',
+          borderRadius: 0
+        }
+      ]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { font: { size: 12 }, color: '#374151' } },
+        tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.x}%` } }
+      },
+      scales: {
+        x: {
+          stacked: true,
+          max: 100,
+          grid: { color: '#F0F4F1' },
+          ticks: { color: '#6B7280', callback: v => v + '%' }
+        },
+        y: { stacked: true, grid: { display: false }, ticks: { color: '#374151' } }
+      }
+    }
+  });
+</script>
+</body>
+</html>

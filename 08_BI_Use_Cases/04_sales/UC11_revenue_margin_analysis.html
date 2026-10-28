@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Revenue &amp; Margin Analysis – NordLeaf Analytics</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #F0F4F1; color: #1a1a1a; }
+    .page-wrapper { max-width: 1200px; margin: 0 auto; padding: 28px 24px 48px; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+    .kpi-card { background: #fff; border-radius: 10px; padding: 20px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .kpi-label { color: #6B7280; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .kpi-value { font-size: 28px; font-weight: 700; color: #1B4332; }
+    .kpi-sub { font-size: 12px; color: #40916C; margin-top: 4px; }
+    .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+    .chart-card { background: #fff; border-radius: 10px; padding: 22px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .chart-card.full { grid-column: 1 / -1; }
+    .chart-title { font-size: 14px; font-weight: 600; color: #1B4332; margin-bottom: 16px; }
+    .chart-container { position: relative; height: 400px; }
+    /* Heatmap table */
+    table.heatmap { width: 100%; border-collapse: collapse; font-size: 13px; }
+    table.heatmap th { background: #1B4332; color: #fff; padding: 10px 16px; text-align: center; font-size: 12px; font-weight: 600; }
+    table.heatmap td { padding: 12px 16px; text-align: center; font-weight: 700; border: 2px solid #F0F4F1; font-size: 14px; }
+    table.heatmap td.row-label { background: #2D6A4F; color: #fff; text-align: left; font-weight: 600; font-size: 13px; }
+    .cell-g  { background: #D5F5E3; color: #1B6B3A; }
+    .cell-l  { background: #E8F5E9; color: #2D6A4F; }
+    .cell-a  { background: #FEF9E7; color: #9A7D0A; }
+    .cell-r  { background: #FADBD8; color: #922B21; }
+    footer { text-align: center; color: #6B7280; font-size: 11px; margin-top: 36px; padding-top: 16px; border-top: 1px solid #dce8df; }
+    .section-label { font-size: 12px; font-weight: 600; color: #40916C; text-transform: uppercase; letter-spacing: 1px; }
+    .legend-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; font-size: 12px; align-items: center; }
+    .legend-swatch { width: 14px; height: 14px; border-radius: 3px; display: inline-block; vertical-align: middle; margin-right: 4px; }
+  </style>
+</head>
+<body>
+
+<header style="background:#1B4332;padding:14px 32px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 6px rgba(0,0,0,0.3)">
+  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="18" cy="18" r="18" fill="#40916C"/>
+    <path d="M18 6 C10 10 8 20 18 30 C28 20 26 10 18 6Z" fill="#D8F3DC"/>
+    <line x1="18" y1="30" x2="18" y2="14" stroke="#1B4332" stroke-width="1.5"/>
+    <line x1="18" y1="22" x2="13" y2="18" stroke="#1B4332" stroke-width="1"/>
+    <line x1="18" y1="19" x2="23" y2="15" stroke="#1B4332" stroke-width="1"/>
+  </svg>
+  <div>
+    <div style="color:#D8F3DC;font-size:11px;letter-spacing:2px;text-transform:uppercase">NordLeaf Analytics</div>
+    <div style="color:#fff;font-size:18px;font-weight:700">Revenue &amp; Margin Analysis by Product / Mill</div>
+  </div>
+  <div style="margin-left:auto;color:#74C69D;font-size:12px">Last updated: 2024-01-15 06:00 EET</div>
+</header>
+
+<div class="page-wrapper">
+  <p class="section-label" style="margin-bottom:16px">Sales · UC-11 · Priority P1</p>
+
+  <!-- KPI Cards -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Total Revenue (2023)</div>
+      <div class="kpi-value">€9.8M</div>
+      <div class="kpi-sub">▲ +7.2% YoY growth</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Gross Margin</div>
+      <div class="kpi-value">28.4%</div>
+      <div class="kpi-sub">▲ +1.8 pts vs prior year</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">EBITDA</div>
+      <div class="kpi-value">€2.7M</div>
+      <div class="kpi-sub">▲ 27.6% EBITDA margin</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Revenue / Ton</div>
+      <div class="kpi-value">€892</div>
+      <div class="kpi-sub">▲ +4.1% vs 2022 (€857)</div>
+    </div>
+  </div>
+
+  <!-- Charts row 1 -->
+  <div class="charts-grid">
+    <div class="chart-card">
+      <div class="chart-title">Monthly Revenue (€K) &amp; Gross Margin % — 2023</div>
+      <div class="chart-container">
+        <canvas id="uc11ComboChart"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Revenue by Product Type per Quarter (€K)</div>
+      <div class="chart-container">
+        <canvas id="uc11StackedProduct"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Heatmap Table -->
+  <div class="chart-card full" style="margin-bottom:0">
+    <div class="chart-title">Gross Margin % Heatmap — Mill × Product</div>
+    <div class="legend-row">
+      <span><span class="legend-swatch" style="background:#D5F5E3"></span>&gt; 30% (Green)</span>
+      <span><span class="legend-swatch" style="background:#E8F5E9"></span>25–30% (Light)</span>
+      <span><span class="legend-swatch" style="background:#FEF9E7"></span>20–25% (Amber)</span>
+      <span><span class="legend-swatch" style="background:#FADBD8"></span>&lt; 20% (Red)</span>
+    </div>
+    <table class="heatmap" id="uc11Heatmap"></table>
+  </div>
+</div>
+
+<footer>NordLeaf Analytics Platform &nbsp;·&nbsp; Powered by BigQuery &amp; Looker Studio &nbsp;·&nbsp; Confidential</footer>
+
+<script>
+const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+// ── Chart 1: Combo — bar revenue + line margin ────────────────────────────────
+new Chart(document.getElementById('uc11ComboChart'), {
+  type: 'bar',
+  data: {
+    labels: months,
+    datasets: [
+      {
+        label: 'Revenue (€K)',
+        data: [720,698,810,785,840,890,820,795,850,910,880,920],
+        backgroundColor: '#40916C',
+        borderRadius: 4,
+        yAxisID: 'yRevenue',
+        order: 2,
+      },
+      {
+        label: 'Gross Margin %',
+        type: 'line',
+        data: [26,27,28,27,29,29,28,28,30,31,30,31],
+        borderColor: '#1B4332',
+        backgroundColor: 'transparent',
+        borderWidth: 2.5,
+        pointRadius: 5,
+        pointBackgroundColor: '#1B4332',
+        tension: 0.3,
+        yAxisID: 'yMargin',
+        order: 1,
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom', labels: { font: { size: 11 }, boxWidth: 12, padding: 10 } }
+    },
+    scales: {
+      x: { grid: { display: false } },
+      yRevenue: {
+        type: 'linear',
+        position: 'left',
+        grid: { color: '#e8efe9' },
+        title: { display: true, text: '€ thousands', font: { size: 11 } },
+        min: 600, max: 980,
+      },
+      yMargin: {
+        type: 'linear',
+        position: 'right',
+        grid: { drawOnChartArea: false },
+        title: { display: true, text: 'Gross Margin %', font: { size: 11 } },
+        min: 20, max: 36,
+        ticks: { callback: v => v + '%' }
+      }
+    }
+  }
+});
+
+// ── Chart 2: Stacked bar — product by quarter ─────────────────────────────────
+new Chart(document.getElementById('uc11StackedProduct'), {
+  type: 'bar',
+  data: {
+    labels: ['Q1 2023','Q2 2023','Q3 2023','Q4 2023'],
+    datasets: [
+      { label: 'Newsprint',  data: [580,610,590,640], backgroundColor: '#1B4332', stack: 'p', borderRadius: 2 },
+      { label: 'Coated',     data: [420,445,460,480], backgroundColor: '#2D6A4F', stack: 'p' },
+      { label: 'Uncoated',   data: [310,325,315,340], backgroundColor: '#40916C', stack: 'p' },
+      { label: 'Specialty',  data: [180,195,205,215], backgroundColor: '#74C69D', stack: 'p' },
+      { label: 'Kraft',      data: [250,270,265,290], backgroundColor: '#B7E4C7', stack: 'p' },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom', labels: { font: { size: 11 }, boxWidth: 12, padding: 8 } },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: €${ctx.parsed.y}K` } }
+    },
+    scales: {
+      x: { stacked: true, grid: { display: false } },
+      y: { stacked: true, grid: { color: '#e8efe9' }, title: { display: true, text: '€ thousands', font: { size: 11 } } }
+    }
+  }
+});
+
+// ── Heatmap table ─────────────────────────────────────────────────────────────
+const mills    = ['Oulu Mill','Kemi Mill','Rauma Mill','Tampere Mill','Lappeenranta Mill'];
+const products = ['Newsprint','Coated','Uncoated','Specialty','Kraft'];
+
+// Margin % values — 5 mills × 5 products
+const marginData = [
+  [32, 28, 24, 35, 29],
+  [27, 31, 22, 26, 33],
+  [18, 25, 30, 28, 21],
+  [34, 29, 27, 19, 31],
+  [26, 22, 32, 30, 17],
+];
+
+function marginClass(v) {
+  if (v > 30) return 'cell-g';
+  if (v > 25) return 'cell-l';
+  if (v > 20) return 'cell-a';
+  return 'cell-r';
+}
+
+const tbl = document.getElementById('uc11Heatmap');
+
+// Header
+let hdr = '<thead><tr><th style="text-align:left;background:#2D6A4F">Mill / Product</th>';
+products.forEach(p => { hdr += `<th>${p}</th>`; });
+hdr += '</tr></thead>';
+
+// Body
+let body = '<tbody>';
+mills.forEach((mill, mi) => {
+  body += `<tr><td class="row-label">${mill}</td>`;
+  products.forEach((_, pi) => {
+    const v = marginData[mi][pi];
+    body += `<td class="${marginClass(v)}">${v}%</td>`;
+  });
+  body += '</tr>';
+});
+body += '</tbody>';
+
+tbl.innerHTML = hdr + body;
+</script>
+</body>
+</html>

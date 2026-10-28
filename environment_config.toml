@@ -1,0 +1,128 @@
+# ============================================================
+# NordLeaf BI Platform - Environment Configuration
+# ============================================================
+# Edit this file to match your GCP project before running
+# nordleaf_setup.py or any infrastructure scripts.
+# ============================================================
+
+PROJECT_ID        = "GCP_PROJECT_ID"
+LOCATION          = "europe-west1"       # GCP region for all regional services
+RAW_BUCKET_NAME   = "nordleaf-raw-data"  # Primary ingestion bucket (read by ETL)
+DATAFUSION_NAME   = "nordleaf-datafusion"
+COMPOSER_NAME     = "nordleaf-composer"
+LOCAL_DATA_FOLDER = "./data/"         # Local CSVs copied to GCS on first setup
+
+# ============================================================
+# STORAGE - All GCS Buckets
+# ============================================================
+[STORAGE]
+raw_bucket       = "nordleaf-raw-data"
+processed_bucket = "nordleaf-processed-data"
+archive_bucket   = "nordleaf-archive"
+composer_bucket  = "nordleaf-composer-bucket"
+dataflow_bucket  = "nordleaf-dataflow-temp"
+vertex_ai_bucket = "nordleaf-vertex-ai"
+
+# ============================================================
+# BIGQUERY
+# ============================================================
+[BIGQUERY_SETTINGS]
+location    = "EU"             # Multi-region; use "europe-west1" for single-region
+dataset_ext  = "nordleaf_ext"  # External tables (GCS-backed, no storage cost)
+dataset_stg  = "nordleaf_stg"  # Staging layer (raw ingest with load metadata)
+dataset_dwh  = "nordleaf_dwh"  # Data warehouse (star schema, partitioned+clustered)
+dataset_mgmt = "nordleaf_mgmt" # Pipeline ops (logs, DQ results, deployments)
+
+# ============================================================
+# DATAPLEX
+# ============================================================
+[DATAPLEX_SETTINGS]
+lake_name           = "nordleaf-lake"
+raw_zone            = "nordleaf-raw-zone"
+curated_zone        = "nordleaf-curated-zone"
+dq_scan_name        = "nordleaf-orders-dq"
+dq_scan_schedule    = "0 7 * * *"      # Daily at 07:00 UTC
+policy_taxonomy     = "NordLeaf Data Classification"
+pii_tag             = "PII"
+financial_tag       = "Confidential/Financial"
+
+# ============================================================
+# CLOUD DATA FUSION
+# ============================================================
+[DATAFUSION_SETTINGS]
+instance_name   = "nordleaf-datafusion"
+region          = "europe-west1"
+pipeline_orders    = "nordleaf-orders-batch-etl"
+pipeline_suppliers = "nordleaf-suppliers-etl"
+pipeline_dir       = "./06_data_fusion_pipelines"
+
+# ============================================================
+# CLOUD COMPOSER / AIRFLOW
+# ============================================================
+[COMPOSER_SETTINGS]
+environment_name  = "nordleaf-composer"
+region            = "europe-west1"
+python_version    = "3"
+airflow_version   = "2.9.3"
+dag_dir           = "./07_composer_orchestration"
+local_airflow_dir = "./07_composer_orchestration/airflow-local"
+alert_email       = "data-alerts@nordleaf.fi"
+
+# ============================================================
+# VERTEX AI / ML
+# ============================================================
+[VERTEX_AI_SETTINGS]
+region             = "europe-west1"
+pipeline_root      = "gs://nordleaf-vertex-ai/pipelines"
+model_display_name = "nordleaf-demand-forecast"
+training_job_name  = "nordleaf-arima-training"
+endpoint_name      = "nordleaf-forecast-endpoint"
+script_dir         = "./08_vertex_ai"
+
+# ============================================================
+# IAM / SECURITY
+# ============================================================
+[IAM_SETTINGS]
+domain           = "googlegroups.com"   # Update to your org domain
+iam_script       = "./01_iam_and_security/setup_iam.sh"
+groups = [
+  "nordleaf-data-engineers",
+  "nordleaf-analysts",
+  "nordleaf-finance",
+  "nordleaf-management",
+]
+service_accounts = [
+  "nordleaf-data-pipeline",
+  "nordleaf-dataflow",
+  "nordleaf-composer",
+  "nordleaf-vertex-ai",
+  "nordleaf-data-fusion",
+  "nordleaf-bi-reader",
+  "nordleaf-dataplex",
+]
+
+# ============================================================
+# LOCAL DATA FILES → GCS PATH MAPPING
+# ============================================================
+# Explicit file → GCS sub-folder mapping (searched across all DATA_FOLDERS).
+[DATA_FILES]
+"orders_2023.csv"              = "orders/"
+"suppliers.csv"                = "suppliers/"
+"deliveries_2023.csv"          = "deliveries/"
+"production_batches_2023.csv"  = "production/"
+"production_batches.json"      = "production/"
+"customer_feedback.csv"        = "feedback/"
+"supplier_events_sample.csv"   = "sensors/"
+"dim_date_2023.csv"            = "dims/"
+"dim_customer.csv"             = "dims/"
+"dim_mill.csv"                 = "dims/"
+"dim_product.csv"              = "dims/"
+
+# ============================================================
+# LOCAL DATA FOLDERS → GCS PREFIX (auto-discovery)
+# ============================================================
+# All .csv / .json / .ndjson files found in each folder are
+# uploaded to the mapped GCS prefix.  Complements DATA_FILES.
+[DATA_FOLDERS]
+"./csv_data" = ""          # per-file routing handled by DATA_FILES above
+"./data"     = "production/"

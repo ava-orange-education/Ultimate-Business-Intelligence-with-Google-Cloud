@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Customer Profitability &amp; Lifetime Value – NordLeaf Analytics</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #F0F4F1; color: #1a1a1a; }
+    .page-wrapper { max-width: 1200px; margin: 0 auto; padding: 28px 24px 48px; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+    .kpi-card { background: #fff; border-radius: 10px; padding: 20px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .kpi-label { color: #6B7280; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .kpi-value { font-size: 28px; font-weight: 700; color: #1B4332; }
+    .kpi-sub { font-size: 12px; color: #40916C; margin-top: 4px; }
+    .kpi-sub.red { color: #C0392B; }
+    .charts-row { display: grid; grid-template-columns: 380px 1fr; gap: 20px; margin-bottom: 20px; }
+    .chart-card { background: #fff; border-radius: 10px; padding: 22px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .chart-card.full { grid-column: 1 / -1; }
+    .chart-title { font-size: 14px; font-weight: 600; color: #1B4332; margin-bottom: 16px; }
+    .chart-container { position: relative; height: 380px; }
+    /* RFM Table */
+    table.rfm-tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
+    table.rfm-tbl th { background: #1B4332; color: #fff; padding: 10px 14px; text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+    table.rfm-tbl td { padding: 10px 14px; border-bottom: 1px solid #e8efe9; vertical-align: middle; }
+    table.rfm-tbl tr:last-child td { border-bottom: none; }
+    table.rfm-tbl tr:nth-child(even) td { background: #f7fbf8; }
+    .seg-badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.3px; white-space: nowrap; }
+    .rank-circle { width: 26px; height: 26px; border-radius: 50%; background: #1B4332; color: #fff; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+    .score-bar { display: flex; align-items: center; gap: 8px; }
+    .score-track { flex: 1; height: 6px; background: #e8efe9; border-radius: 3px; overflow: hidden; }
+    .score-fill { height: 100%; border-radius: 3px; }
+    footer { text-align: center; color: #6B7280; font-size: 11px; margin-top: 36px; padding-top: 16px; border-top: 1px solid #dce8df; }
+    .section-label { font-size: 12px; font-weight: 600; color: #40916C; text-transform: uppercase; letter-spacing: 1px; }
+  </style>
+</head>
+<body>
+
+<header style="background:#1B4332;padding:14px 32px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 6px rgba(0,0,0,0.3)">
+  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="18" cy="18" r="18" fill="#40916C"/>
+    <path d="M18 6 C10 10 8 20 18 30 C28 20 26 10 18 6Z" fill="#D8F3DC"/>
+    <line x1="18" y1="30" x2="18" y2="14" stroke="#1B4332" stroke-width="1.5"/>
+    <line x1="18" y1="22" x2="13" y2="18" stroke="#1B4332" stroke-width="1"/>
+    <line x1="18" y1="19" x2="23" y2="15" stroke="#1B4332" stroke-width="1"/>
+  </svg>
+  <div>
+    <div style="color:#D8F3DC;font-size:11px;letter-spacing:2px;text-transform:uppercase">NordLeaf Analytics</div>
+    <div style="color:#fff;font-size:18px;font-weight:700">Customer Profitability &amp; Lifetime Value</div>
+  </div>
+  <div style="margin-left:auto;color:#74C69D;font-size:12px">Last updated: 2024-01-15 06:00 EET</div>
+</header>
+
+<div class="page-wrapper">
+  <p class="section-label" style="margin-bottom:16px">Customer · UC-12 · Priority P1</p>
+
+  <!-- KPI Cards -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Champion Customers</div>
+      <div class="kpi-value" style="color:#27AE60">4</div>
+      <div class="kpi-sub">Top RFM tier — protect &amp; grow</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Avg Customer LTV</div>
+      <div class="kpi-value">€540K</div>
+      <div class="kpi-sub">▲ +8.3% vs prior year</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Churn Risk Customers</div>
+      <div class="kpi-value" style="color:#C0392B">3</div>
+      <div class="kpi-sub red">AT RISK — re-engagement required</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Avg RFM Score</div>
+      <div class="kpi-value">10.2</div>
+      <div class="kpi-sub">Max 15 — portfolio is healthy</div>
+    </div>
+  </div>
+
+  <!-- Charts Row -->
+  <div class="charts-row">
+    <div class="chart-card">
+      <div class="chart-title">CLV Segment Distribution</div>
+      <div class="chart-container" style="height:340px">
+        <canvas id="uc12Doughnut"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Days Since Last Order vs Total Revenue — Customer Scatter</div>
+      <div class="chart-container" style="height:340px">
+        <canvas id="uc12Scatter"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- RFM Table -->
+  <div class="chart-card full" style="margin-bottom:0">
+    <div class="chart-title">Top 10 Customers — RFM Score Ranking &amp; Segment</div>
+    <table class="rfm-tbl" id="uc12RfmTable"></table>
+  </div>
+</div>
+
+<footer>NordLeaf Analytics Platform &nbsp;·&nbsp; Powered by BigQuery &amp; Looker Studio &nbsp;·&nbsp; Confidential</footer>
+
+<script>
+// ── Segment config ────────────────────────────────────────────────────────────
+const segCfg = {
+  CHAMPION:        { color: '#1B4332', badge: 'background:#D8F3DC;color:#1B4332' },
+  LOYAL:           { color: '#2D6A4F', badge: 'background:#B7E4C7;color:#2D6A4F' },
+  PROMISING:       { color: '#40916C', badge: 'background:#d4efdf;color:#218838' },
+  'AT RISK':       { color: '#E67E22', badge: 'background:#FEF9E7;color:#E67E22' },
+  'NEEDS ATTENTION':{ color: '#C0392B', badge: 'background:#FADBD8;color:#C0392B' },
+  LOST:            { color: '#7F8C8D', badge: 'background:#e8e8e8;color:#555' },
+};
+
+// ── Chart 1: Doughnut — CLV segments ─────────────────────────────────────────
+const segLabels = ['CHAMPION','LOYAL','PROMISING','AT RISK','NEEDS ATTENTION','LOST'];
+const segCounts = [4, 5, 3, 3, 2, 1];
+
+new Chart(document.getElementById('uc12Doughnut'), {
+  type: 'doughnut',
+  data: {
+    labels: segLabels,
+    datasets: [{
+      data: segCounts,
+      backgroundColor: segLabels.map(l => segCfg[l].color),
+      borderWidth: 2,
+      borderColor: '#fff',
+      hoverOffset: 6,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    cutout: '60%',
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: { font: { size: 11 }, boxWidth: 12, padding: 8 }
+      },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.label}: ${ctx.parsed} customers (${Math.round(ctx.parsed/18*100)}%)`
+        }
+      }
+    }
+  }
+});
+
+// ── Chart 2: Scatter — recency vs revenue ────────────────────────────────────
+const customers = [
+  { name: 'Helsinki Paper', days: 5,  rev: 1150, seg: 'CHAMPION' },
+  { name: 'Baltic Print',   days: 8,  rev: 980,  seg: 'CHAMPION' },
+  { name: 'Nordic Media',   days: 12, rev: 870,  seg: 'CHAMPION' },
+  { name: 'Scandic Pack',   days: 15, rev: 760,  seg: 'CHAMPION' },
+  { name: 'German Press',   days: 20, rev: 650,  seg: 'LOYAL' },
+  { name: 'FrankfurtDruck', days: 25, rev: 580,  seg: 'LOYAL' },
+  { name: 'Tallinn Print',  days: 30, rev: 520,  seg: 'LOYAL' },
+  { name: 'Oslo Books',     days: 35, rev: 490,  seg: 'LOYAL' },
+  { name: 'Stockholm Press',days: 40, rev: 460,  seg: 'LOYAL' },
+  { name: 'Paris Editions', days: 45, rev: 420,  seg: 'PROMISING' },
+  { name: 'London Books',   days: 50, rev: 380,  seg: 'PROMISING' },
+  { name: 'Dublin Media',   days: 55, rev: 340,  seg: 'PROMISING' },
+  { name: 'Prague Print',   days: 75, rev: 280,  seg: 'AT RISK' },
+  { name: 'Warsaw Pub',     days: 82, rev: 240,  seg: 'AT RISK' },
+  { name: 'Riga Paper',     days: 88, rev: 190,  seg: 'AT RISK' },
+  { name: 'Vienna Druck',   days: 95, rev: 150,  seg: 'NEEDS ATTENTION' },
+  { name: 'Budapest Press', days: 102,rev: 110,  seg: 'NEEDS ATTENTION' },
+  { name: 'Minsk Paper',    days: 115,rev: 60,   seg: 'LOST' },
+];
+
+// Group by segment for scatter
+const segGroups = {};
+customers.forEach(c => {
+  if (!segGroups[c.seg]) segGroups[c.seg] = [];
+  segGroups[c.seg].push({ x: c.days, y: c.rev, label: c.name });
+});
+
+new Chart(document.getElementById('uc12Scatter'), {
+  type: 'scatter',
+  data: {
+    datasets: Object.entries(segGroups).map(([seg, pts]) => ({
+      label: seg,
+      data: pts,
+      backgroundColor: segCfg[seg].color + 'CC',
+      borderColor: segCfg[seg].color,
+      pointRadius: 8,
+      pointHoverRadius: 11,
+    }))
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom', labels: { font: { size: 10 }, boxWidth: 10, padding: 8 } },
+      tooltip: {
+        callbacks: {
+          label: ctx => `${ctx.raw.label}: ${ctx.parsed.x}d since order · €${ctx.parsed.y}K revenue`
+        }
+      }
+    },
+    scales: {
+      x: {
+        min: 0, max: 125,
+        title: { display: true, text: 'Days Since Last Order', font: { size: 11 } },
+        grid: { color: '#e8efe9' }
+      },
+      y: {
+        min: 0, max: 1250,
+        title: { display: true, text: 'Total Revenue (€K)', font: { size: 11 } },
+        grid: { color: '#e8efe9' }
+      }
+    }
+  }
+});
+
+// ── RFM Table ─────────────────────────────────────────────────────────────────
+const rfmData = [
+  { name: 'Helsinki Paper', seg: 'CHAMPION',  r: 5, f: 5, m: 5, clv: 1150, days: 5 },
+  { name: 'Baltic Print',   seg: 'CHAMPION',  r: 5, f: 5, m: 4, clv: 980,  days: 8 },
+  { name: 'Nordic Media',   seg: 'CHAMPION',  r: 5, f: 4, m: 5, clv: 870,  days: 12 },
+  { name: 'Scandic Pack',   seg: 'CHAMPION',  r: 5, f: 4, m: 4, clv: 760,  days: 15 },
+  { name: 'German Press',   seg: 'LOYAL',     r: 4, f: 4, m: 4, clv: 650,  days: 20 },
+  { name: 'FrankfurtDruck', seg: 'LOYAL',     r: 4, f: 4, m: 3, clv: 580,  days: 25 },
+  { name: 'Tallinn Print',  seg: 'LOYAL',     r: 4, f: 3, m: 4, clv: 520,  days: 30 },
+  { name: 'Oslo Books',     seg: 'LOYAL',     r: 4, f: 3, m: 3, clv: 490,  days: 35 },
+  { name: 'Paris Editions', seg: 'PROMISING', r: 3, f: 3, m: 3, clv: 420,  days: 45 },
+  { name: 'London Books',   seg: 'PROMISING', r: 3, f: 3, m: 2, clv: 380,  days: 50 },
+];
+
+function rfmBarHtml(val, max, color) {
+  const pct = (val / max) * 100;
+  return `<div class="score-bar"><div class="score-track"><div class="score-fill" style="width:${pct}%;background:${color}"></div></div><span style="font-weight:700;font-size:13px;color:${color};min-width:16px">${val}</span></div>`;
+}
+
+const tbl = document.getElementById('uc12RfmTable');
+let html = `<thead><tr>
+  <th style="width:40px">#</th>
+  <th>Customer</th>
+  <th>Segment</th>
+  <th style="width:120px">Recency (R)</th>
+  <th style="width:120px">Frequency (F)</th>
+  <th style="width:120px">Monetary (M)</th>
+  <th style="width:90px">RFM Total</th>
+  <th>Est. CLV (€K)</th>
+  <th>Last Order</th>
+</tr></thead><tbody>`;
+
+rfmData.forEach((c, i) => {
+  const total = c.r + c.f + c.m;
+  const cfg = segCfg[c.seg];
+  html += `<tr>
+    <td><div class="rank-circle">${i + 1}</div></td>
+    <td style="font-weight:600;color:#1B4332">${c.name}</td>
+    <td><span class="seg-badge" style="${cfg.badge}">${c.seg}</span></td>
+    <td>${rfmBarHtml(c.r, 5, '#2D6A4F')}</td>
+    <td>${rfmBarHtml(c.f, 5, '#40916C')}</td>
+    <td>${rfmBarHtml(c.m, 5, '#74C69D')}</td>
+    <td style="font-size:18px;font-weight:700;color:#1B4332;text-align:center">${total}</td>
+    <td style="font-weight:600">€${c.clv.toLocaleString()}K</td>
+    <td style="color:#6B7280">${c.days}d ago</td>
+  </tr>`;
+});
+
+html += '</tbody>';
+tbl.innerHTML = html;
+</script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+delivery_id,supplier_id,supplier_name,delivery_date,material_type,quantity_tons,quality_grade,mill_destination,truck_id,invoice_eur
+DEL-2023-0001,SUP-002,UPM Silvesta Oy,2023-07-01,Hardwood Pulp,261.3,A,Jyväskylä Mill,TRK-FI-012,175614.52
+DEL-2023-0002,SUP-004,Kemira Oyj,2023-07-01,Bleaching Chemicals,13.8,A,Tampere Mill,TRK-FI-018,7799.86
+DEL-2023-0003,SUP-006,Fortum Oyj,2023-07-01,Electricity (MWh),1501.4,B,Turku Mill,TRK-FI-005,383274.27
+DEL-2023-0004,SUP-007,Cargotech AS,2023-07-01,Logistics Service,1.0,A,Tampere Mill,TRK-FI-017,317.86
+DEL-2023-0005,SUP-008,Baltic Timber SIA,2023-07-01,Softwood Logs,313.9,C,Oulu Mill,TRK-FI-012,171607.95
+DEL-2023-0006,SUP-001,Metsä Forest Oy,2023-07-04,Softwood Pulp,295.2,A,Espoo Mill,TRK-FI-042,86184.0
+DEL-2023-0007,SUP-002,UPM Silvesta Oy,2023-07-04,Hardwood Pulp,207.4,A,Tampere Mill,TRK-FI-037,40940.28
+DEL-2023-0008,SUP-005,Clariant AG,2023-07-04,Coating Chemicals,10.0,A,Tampere Mill,TRK-FI-043,7563.81
+DEL-2023-0009,SUP-006,Fortum Oyj,2023-07-04,Electricity (MWh),727.4,A,Espoo Mill,TRK-FI-033,380805.66
+DEL-2023-0010,SUP-001,Metsä Forest Oy,2023-07-07,Softwood Pulp,336.5,B,Tampere Mill,TRK-FI-001,168614.65
+DEL-2023-0011,SUP-002,UPM Silvesta Oy,2023-07-07,Hardwood Pulp,239.6,B,Tampere Mill,TRK-FI-023,124282.56
+DEL-2023-0012,SUP-003,Pölkky Oy,2023-07-07,Softwood Pulp,245.4,A,Tampere Mill,TRK-FI-022,95087.83
+DEL-2023-0013,SUP-004,Kemira Oyj,2023-07-07,Bleaching Chemicals,16.9,B,Oulu Mill,TRK-FI-003,4475.15
+DEL-2023-0014,SUP-006,Fortum Oyj,2023-07-07,Electricity (MWh),948.3,A,Tampere Mill,TRK-FI-023,530954.2
+DEL-2023-0015,SUP-007,Cargotech AS,2023-07-07,Logistics Service,1.0,A,Oulu Mill,TRK-FI-013,240.96
+DEL-2023-0016,SUP-008,Baltic Timber SIA,2023-07-07,Softwood Logs,499.3,A,Espoo Mill,TRK-FI-035,95338.94
+DEL-2023-0017,SUP-001,Metsä Forest Oy,2023-07-10,Softwood Pulp,350.0,C,Espoo Mill,TRK-FI-002,272395.62
+DEL-2023-0018,SUP-002,UPM Silvesta Oy,2023-07-10,Hardwood Pulp,157.3,B,Tampere Mill,TRK-FI-014,65056.15
+DEL-2023-0019,SUP-004,Kemira Oyj,2023-07-10,Bleaching Chemicals,16.9,A,Jyväskylä Mill,TRK-FI-038,4171.26
+DEL-2023-0020,SUP-005,Clariant AG,2023-07-10,Coating Chemicals,5.7,B,Espoo Mill,TRK-FI-031,3277.45
+DEL-2023-0021,SUP-007,Cargotech AS,2023-07-10,Logistics Service,1.0,A,Tampere Mill,TRK-FI-004,261.96
+DEL-2023-0022,SUP-002,UPM Silvesta Oy,2023-07-13,Hardwood Pulp,229.5,B,Tampere Mill,TRK-FI-007,156420.34
+DEL-2023-0023,SUP-003,Pölkky Oy,2023-07-13,Softwood Pulp,289.2,A,Tampere Mill,TRK-FI-028,194601.17
+DEL-2023-0024,SUP-004,Kemira Oyj,2023-07-13,Bleaching Chemicals,22.5,B,Espoo Mill,TRK-FI-044,8116.94
+DEL-2023-0025,SUP-005,Clariant AG,2023-07-13,Coating Chemicals,6.4,B,Oulu Mill,TRK-FI-038,4139.19
+DEL-2023-0026,SUP-006,Fortum Oyj,2023-07-13,Electricity (MWh),594.8,A,Espoo Mill,TRK-FI-024,154191.82
+DEL-2023-0027,SUP-007,Cargotech AS,2023-07-13,Logistics Service,1.0,B,Tampere Mill,TRK-FI-041,236.69
+DEL-2023-0028,SUP-008,Baltic Timber SIA,2023-07-13,Softwood Logs,455.5,A,Espoo Mill,TRK-FI-001,92224.95
+DEL-2023-0029,SUP-001,Metsä Forest Oy,2023-07-16,Softwood Pulp,292.5,A,Turku Mill,TRK-FI-050,123009.25
+DEL-2023-0030,SUP-002,UPM Silvesta Oy,2023-07-16,Hardwood Pulp,166.5,A,Turku Mill,TRK-FI-027,81586.08
+DEL-2023-0031,SUP-003,Pölkky Oy,2023-07-16,Softwood Pulp,226.2,A,Jyväskylä Mill,TRK-FI-032,60395.47
+DEL-2023-0032,SUP-004,Kemira Oyj,2023-07-16,Bleaching Chemicals,11.3,B,Turku Mill,TRK-FI-001,4249.98
+DEL-2023-0033,SUP-005,Clariant AG,2023-07-16,Coating Chemicals,6.9,C,Tampere Mill,TRK-FI-049,3810.86
+DEL-2023-0034,SUP-007,Cargotech AS,2023-07-16,Logistics Service,1.0,A,Oulu Mill,TRK-FI-013,329.68
+DEL-2023-0035,SUP-008,Baltic Timber SIA,2023-07-16,Softwood Logs,329.8,B,Espoo Mill,TRK-FI-011,156122.26
+DEL-2023-0036,SUP-001,Metsä Forest Oy,2023-07-19,Softwood Pulp,286.0,A,Turku Mill,TRK-FI-017,81862.74
+DEL-2023-0037,SUP-002,UPM Silvesta Oy,2023-07-19,Hardwood Pulp,254.7,B,Tampere Mill,TRK-FI-004,55492.44
+DEL-2023-0038,SUP-004,Kemira Oyj,2023-07-19,Bleaching Chemicals,21.8,A,Tampere Mill,TRK-FI-016,4274.08
+DEL-2023-0039,SUP-006,Fortum Oyj,2023-07-19,Electricity (MWh),989.0,A,Turku Mill,TRK-FI-008,296246.15
+DEL-2023-0040,SUP-007,Cargotech AS,2023-07-19,Logistics Service,1.0,B,Oulu Mill,TRK-FI-015,394.1
+DEL-2023-0041,SUP-008,Baltic Timber SIA,2023-07-19,Softwood Logs,417.0,A,Espoo Mill,TRK-FI-040,101836.33
+DEL-2023-0042,SUP-001,Metsä Forest Oy,2023-07-22,Softwood Pulp,334.2,A,Oulu Mill,TRK-FI-018,187423.95
+DEL-2023-0043,SUP-002,UPM Silvesta Oy,2023-07-22,Hardwood Pulp,166.5,A,Tampere Mill,TRK-FI-008,55343.38
+DEL-2023-0044,SUP-004,Kemira Oyj,2023-07-22,Bleaching Chemicals,12.6,A,Turku Mill,TRK-FI-041,6833.78
+DEL-2023-0045,SUP-007,Cargotech AS,2023-07-22,Logistics Service,1.0,A,Espoo Mill,TRK-FI-032,707.03
+DEL-2023-0046,SUP-001,Metsä Forest Oy,2023-07-25,Softwood Pulp,346.3,A,Tampere Mill,TRK-FI-048,216268.35
+DEL-2023-0047,SUP-003,Pölkky Oy,2023-07-25,Softwood Pulp,265.1,A,Jyväskylä Mill,TRK-FI-037,202818.47
+DEL-2023-0048,SUP-005,Clariant AG,2023-07-25,Coating Chemicals,5.4,C,Jyväskylä Mill,TRK-FI-034,928.01
+DEL-2023-0049,SUP-006,Fortum Oyj,2023-07-25,Electricity (MWh),1714.6,A,Tampere Mill,TRK-FI-016,761431.38
+DEL-2023-0050,SUP-007,Cargotech AS,2023-07-25,Logistics Service,1.0,A,Espoo Mill,TRK-FI-009,767.46
+DEL-2023-0051,SUP-008,Baltic Timber SIA,2023-07-25,Softwood Logs,347.8,C,Tampere Mill,TRK-FI-020,160634.53
+DEL-2023-0052,SUP-001,Metsä Forest Oy,2023-07-28,Softwood Pulp,344.3,A,Jyväskylä Mill,TRK-FI-030,57108.61
+DEL-2023-0053,SUP-002,UPM Silvesta Oy,2023-07-28,Hardwood Pulp,168.0,B,Oulu Mill,TRK-FI-024,111452.57
+DEL-2023-0054,SUP-003,Pölkky Oy,2023-07-28,Softwood Pulp,305.6,A,Tampere Mill,TRK-FI-045,122292.42
+DEL-2023-0055,SUP-004,Kemira Oyj,2023-07-28,Bleaching Chemicals,10.5,A,Turku Mill,TRK-FI-040,6339.23
+DEL-2023-0056,SUP-005,Clariant AG,2023-07-28,Coating Chemicals,12.9,B,Tampere Mill,TRK-FI-022,7137.52
+DEL-2023-0057,SUP-007,Cargotech AS,2023-07-28,Logistics Service,1.0,A,Tampere Mill,TRK-FI-024,222.13
+DEL-2023-0058,SUP-008,Baltic Timber SIA,2023-07-28,Softwood Logs,308.2,A,Jyväskylä Mill,TRK-FI-036,187437.34
+DEL-2023-0059,SUP-002,UPM Silvesta Oy,2023-07-31,Hardwood Pulp,277.6,A,Tampere Mill,TRK-FI-048,158752.49
+DEL-2023-0060,SUP-004,Kemira Oyj,2023-07-31,Bleaching Chemicals,24.4,A,Oulu Mill,TRK-FI-018,8742.56
+DEL-2023-0061,SUP-005,Clariant AG,2023-07-31,Coating Chemicals,9.2,A,Turku Mill,TRK-FI-032,3444.45
+DEL-2023-0062,SUP-006,Fortum Oyj,2023-07-31,Electricity (MWh),1744.3,A,Jyväskylä Mill,TRK-FI-035,1030707.55
+DEL-2023-0063,SUP-008,Baltic Timber SIA,2023-07-31,Softwood Logs,373.6,A,Tampere Mill,TRK-FI-030,101779.78
+DEL-2023-0064,SUP-001,Metsä Forest Oy,2023-08-01,Softwood Pulp,334.7,A,Tampere Mill,TRK-FI-018,73997.89
+DEL-2023-0065,SUP-002,UPM Silvesta Oy,2023-08-01,Hardwood Pulp,169.2,A,Oulu Mill,TRK-FI-041,82645.23
+DEL-2023-0066,SUP-003,Pölkky Oy,2023-08-01,Softwood Pulp,262.5,A,Oulu Mill,TRK-FI-027,120235.03
+DEL-2023-0067,SUP-004,Kemira Oyj,2023-08-01,Bleaching Chemicals,19.7,A,Tampere Mill,TRK-FI-015,3237.18
+DEL-2023-0068,SUP-006,Fortum Oyj,2023-08-01,Electricity (MWh),1003.8,A,Turku Mill,TRK-FI-043,467767.24
+DEL-2023-0069,SUP-007,Cargotech AS,2023-08-01,Logistics Service,1.0,A,Turku Mill,TRK-FI-020,518.71
+DEL-2023-0070,SUP-008,Baltic Timber SIA,2023-08-01,Softwood Logs,352.0,A,Turku Mill,TRK-FI-004,228918.74
+DEL-2023-0071,SUP-001,Metsä Forest Oy,2023-08-04,Softwood Pulp,319.8,C,Jyväskylä Mill,TRK-FI-046,240069.24
+DEL-2023-0072,SUP-002,UPM Silvesta Oy,2023-08-04,Hardwood Pulp,173.7,A,Oulu Mill,TRK-FI-008,44261.46
+DEL-2023-0073,SUP-003,Pölkky Oy,2023-08-04,Softwood Pulp,247.5,A,Turku Mill,TRK-FI-014,96596.01
+DEL-2023-0074,SUP-004,Kemira Oyj,2023-08-04,Bleaching Chemicals,10.5,A,Turku Mill,TRK-FI-029,2584.72
+DEL-2023-0075,SUP-005,Clariant AG,2023-08-04,Coating Chemicals,6.6,A,Tampere Mill,TRK-FI-032,2725.57
+DEL-2023-0076,SUP-001,Metsä Forest Oy,2023-08-07,Softwood Pulp,415.8,A,Jyväskylä Mill,TRK-FI-046,151905.22
+DEL-2023-0077,SUP-002,UPM Silvesta Oy,2023-08-07,Hardwood Pulp,266.5,C,Jyväskylä Mill,TRK-FI-037,155496.63
+DEL-2023-0078,SUP-005,Clariant AG,2023-08-07,Coating Chemicals,6.1,A,Tampere Mill,TRK-FI-036,1467.81
+DEL-2023-0079,SUP-006,Fortum Oyj,2023-08-07,Electricity (MWh),537.2,A,Oulu Mill,TRK-FI-006,236304.74
+DEL-2023-0080,SUP-007,Cargotech AS,2023-08-07,Logistics Service,1.0,A,Jyväskylä Mill,TRK-FI-050,294.39
+DEL-2023-0081,SUP-008,Baltic Timber SIA,2023-08-07,Softwood Logs,304.5,A,Espoo Mill,TRK-FI-006,179682.77
+DEL-2023-0082,SUP-002,UPM Silvesta Oy,2023-08-10,Hardwood Pulp,213.8,A,Jyväskylä Mill,TRK-FI-043,163174.6
+DEL-2023-0083,SUP-003,Pölkky Oy,2023-08-10,Softwood Pulp,222.2,B,Turku Mill,TRK-FI-001,89096.25
+DEL-2023-0084,SUP-004,Kemira Oyj,2023-08-10,Bleaching Chemicals,15.3,C,Jyväskylä Mill,TRK-FI-047,3166.17
+DEL-2023-0085,SUP-007,Cargotech AS,2023-08-10,Logistics Service,1.0,A,Espoo Mill,TRK-FI-027,623.59
+DEL-2023-0086,SUP-008,Baltic Timber SIA,2023-08-10,Softwood Logs,417.4,A,Oulu Mill,TRK-FI-034,144879.64
+DEL-2023-0087,SUP-002,UPM Silvesta Oy,2023-08-13,Hardwood Pulp,274.8,B,Tampere Mill,TRK-FI-041,42402.26
+DEL-2023-0088,SUP-004,Kemira Oyj,2023-08-13,Bleaching Chemicals,18.3,B,Oulu Mill,TRK-FI-025,5115.17
+DEL-2023-0089,SUP-005,Clariant AG,2023-08-13,Coating Chemicals,9.9,B,Turku Mill,TRK-FI-020,6855.56
+DEL-2023-0090,SUP-006,Fortum Oyj,2023-08-13,Electricity (MWh),1609.8,A,Tampere Mill,TRK-FI-020,402636.06
+DEL-2023-0091,SUP-001,Metsä Forest Oy,2023-08-16,Softwood Pulp,371.5,B,Espoo Mill,TRK-FI-045,99038.93
+DEL-2023-0092,SUP-002,UPM Silvesta Oy,2023-08-16,Hardwood Pulp,153.7,B,Espoo Mill,TRK-FI-005,122393.83
+DEL-2023-0093,SUP-003,Pölkky Oy,2023-08-16,Softwood Pulp,254.3,A,Espoo Mill,TRK-FI-041,181678.24
+DEL-2023-0094,SUP-004,Kemira Oyj,2023-08-16,Bleaching Chemicals,24.6,B,Turku Mill,TRK-FI-037,11885.29
+DEL-2023-0095,SUP-005,Clariant AG,2023-08-16,Coating Chemicals,7.6,A,Oulu Mill,TRK-FI-045,2719.22
+DEL-2023-0096,SUP-006,Fortum Oyj,2023-08-16,Electricity (MWh),745.0,A,Espoo Mill,TRK-FI-023,419852.68
+DEL-2023-0097,SUP-007,Cargotech AS,2023-08-16,Logistics Service,1.0,A,Tampere Mill,TRK-FI-050,484.01
+DEL-2023-0098,SUP-008,Baltic Timber SIA,2023-08-16,Softwood Logs,452.9,A,Oulu Mill,TRK-FI-021,227995.76
+DEL-2023-0099,SUP-002,UPM Silvesta Oy,2023-08-19,Hardwood Pulp,189.1,A,Turku Mill,TRK-FI-038,40144.36
+DEL-2023-0100,SUP-003,Pölkky Oy,2023-08-19,Softwood Pulp,221.6,A,Turku Mill,TRK-FI-032,86968.96
+DEL-2023-0101,SUP-004,Kemira Oyj,2023-08-19,Bleaching Chemicals,23.8,A,Oulu Mill,TRK-FI-015,5960.96
+DEL-2023-0102,SUP-007,Cargotech AS,2023-08-19,Logistics Service,1.0,C,Jyväskylä Mill,TRK-FI-045,613.16
+DEL-2023-0103,SUP-001,Metsä Forest Oy,2023-08-22,Softwood Pulp,344.5,A,Oulu Mill,TRK-FI-031,258449.53
+DEL-2023-0104,SUP-002,UPM Silvesta Oy,2023-08-22,Hardwood Pulp,239.8,A,Espoo Mill,TRK-FI-039,174651.65
+DEL-2023-0105,SUP-003,Pölkky Oy,2023-08-22,Softwood Pulp,345.5,A,Turku Mill,TRK-FI-008,58283.67
+DEL-2023-0106,SUP-004,Kemira Oyj,2023-08-22,Bleaching Chemicals,22.9,A,Oulu Mill,TRK-FI-014,8011.07
+DEL-2023-0107,SUP-005,Clariant AG,2023-08-22,Coating Chemicals,5.8,A,Tampere Mill,TRK-FI-050,1163.06
+DEL-2023-0108,SUP-006,Fortum Oyj,2023-08-22,Electricity (MWh),1146.9,A,Tampere Mill,TRK-FI-033,763245.74
+DEL-2023-0109,SUP-007,Cargotech AS,2023-08-22,Logistics Service,1.0,B,Tampere Mill,TRK-FI-043,193.06
+DEL-2023-0110,SUP-008,Baltic Timber SIA,2023-08-22,Softwood Logs,319.3,A,Jyväskylä Mill,TRK-FI-013,90524.99
+DEL-2023-0111,SUP-001,Metsä Forest Oy,2023-08-25,Softwood Pulp,329.2,A,Turku Mill,TRK-FI-023,252402.43
+DEL-2023-0112,SUP-002,UPM Silvesta Oy,2023-08-25,Hardwood Pulp,261.2,B,Jyväskylä Mill,TRK-FI-037,80236.63
+DEL-2023-0113,SUP-003,Pölkky Oy,2023-08-25,Softwood Pulp,322.9,B,Jyväskylä Mill,TRK-FI-013,93979.64
+DEL-2023-0114,SUP-005,Clariant AG,2023-08-25,Coating Chemicals,12.5,A,Tampere Mill,TRK-FI-033,9384.39
+DEL-2023-0115,SUP-007,Cargotech AS,2023-08-25,Logistics Service,1.0,A,Tampere Mill,TRK-FI-023,267.55
+DEL-2023-0116,SUP-001,Metsä Forest Oy,2023-08-28,Softwood Pulp,352.0,A,Turku Mill,TRK-FI-008,81083.2
+DEL-2023-0117,SUP-002,UPM Silvesta Oy,2023-08-28,Hardwood Pulp,214.5,A,Turku Mill,TRK-FI-003,109853.15
+DEL-2023-0118,SUP-003,Pölkky Oy,2023-08-28,Softwood Pulp,274.1,A,Espoo Mill,TRK-FI-020,148083.4
+DEL-2023-0119,SUP-004,Kemira Oyj,2023-08-28,Bleaching Chemicals,22.6,A,Espoo Mill,TRK-FI-028,7658.76
+DEL-2023-0120,SUP-005,Clariant AG,2023-08-28,Coating Chemicals,5.7,B,Espoo Mill,TRK-FI-024,4334.3
+DEL-2023-0121,SUP-006,Fortum Oyj,2023-08-28,Electricity (MWh),1998.1,A,Tampere Mill,TRK-FI-034,814506.17
+DEL-2023-0122,SUP-007,Cargotech AS,2023-08-28,Logistics Service,1.0,A,Espoo Mill,TRK-FI-007,601.77
+DEL-2023-0123,SUP-002,UPM Silvesta Oy,2023-08-31,Hardwood Pulp,197.3,A,Oulu Mill,TRK-FI-026,105895.75
+DEL-2023-0124,SUP-003,Pölkky Oy,2023-08-31,Softwood Pulp,325.7,B,Turku Mill,TRK-FI-050,210770.59
+DEL-2023-0125,SUP-004,Kemira Oyj,2023-08-31,Bleaching Chemicals,14.1,B,Espoo Mill,TRK-FI-043,5378.63
+DEL-2023-0126,SUP-005,Clariant AG,2023-08-31,Coating Chemicals,9.0,A,Turku Mill,TRK-FI-030,2212.14
+DEL-2023-0127,SUP-006,Fortum Oyj,2023-08-31,Electricity (MWh),876.0,A,Oulu Mill,TRK-FI-048,148324.57
+DEL-2023-0128,SUP-007,Cargotech AS,2023-08-31,Logistics Service,1.0,A,Oulu Mill,TRK-FI-044,398.71
+DEL-2023-0129,SUP-008,Baltic Timber SIA,2023-08-31,Softwood Logs,360.6,A,Tampere Mill,TRK-FI-034,209040.68
+DEL-2023-0130,SUP-003,Pölkky Oy,2023-09-01,Softwood Pulp,299.3,A,Turku Mill,TRK-FI-035,150423.62
+DEL-2023-0131,SUP-004,Kemira Oyj,2023-09-01,Bleaching Chemicals,24.3,A,Espoo Mill,TRK-FI-008,17546.58
+DEL-2023-0132,SUP-005,Clariant AG,2023-09-01,Coating Chemicals,8.1,A,Espoo Mill,TRK-FI-012,1404.44
+DEL-2023-0133,SUP-006,Fortum Oyj,2023-09-01,Electricity (MWh),1790.5,A,Oulu Mill,TRK-FI-009,840571.26
+DEL-2023-0134,SUP-007,Cargotech AS,2023-09-01,Logistics Service,1.0,B,Jyväskylä Mill,TRK-FI-043,588.77
+DEL-2023-0135,SUP-008,Baltic Timber SIA,2023-09-01,Softwood Logs,407.9,A,Jyväskylä Mill,TRK-FI-033,287703.48
+DEL-2023-0136,SUP-001,Metsä Forest Oy,2023-09-04,Softwood Pulp,316.9,A,Espoo Mill,TRK-FI-023,174615.32
+DEL-2023-0137,SUP-003,Pölkky Oy,2023-09-04,Softwood Pulp,209.2,A,Oulu Mill,TRK-FI-023,145186.31
+DEL-2023-0138,SUP-005,Clariant AG,2023-09-04,Coating Chemicals,12.7,A,Espoo Mill,TRK-FI-023,2708.62
+DEL-2023-0139,SUP-007,Cargotech AS,2023-09-04,Logistics Service,1.0,A,Oulu Mill,TRK-FI-038,571.25
+DEL-2023-0140,SUP-008,Baltic Timber SIA,2023-09-04,Softwood Logs,437.6,B,Tampere Mill,TRK-FI-002,161665.31
+DEL-2023-0141,SUP-001,Metsä Forest Oy,2023-09-07,Softwood Pulp,285.2,A,Espoo Mill,TRK-FI-027,148085.0
+DEL-2023-0142,SUP-002,UPM Silvesta Oy,2023-09-07,Hardwood Pulp,240.5,A,Turku Mill,TRK-FI-025,95124.83
+DEL-2023-0143,SUP-003,Pölkky Oy,2023-09-07,Softwood Pulp,214.7,A,Oulu Mill,TRK-FI-033,79090.94
+DEL-2023-0144,SUP-005,Clariant AG,2023-09-07,Coating Chemicals,6.7,A,Espoo Mill,TRK-FI-041,1883.66
+DEL-2023-0145,SUP-001,Metsä Forest Oy,2023-09-10,Softwood Pulp,320.2,A,Jyväskylä Mill,TRK-FI-015,131703.95
+DEL-2023-0146,SUP-002,UPM Silvesta Oy,2023-09-10,Hardwood Pulp,274.5,B,Jyväskylä Mill,TRK-FI-022,58077.85
+DEL-2023-0147,SUP-003,Pölkky Oy,2023-09-10,Softwood Pulp,285.0,A,Espoo Mill,TRK-FI-005,81604.18
+DEL-2023-0148,SUP-004,Kemira Oyj,2023-09-10,Bleaching Chemicals,14.5,B,Espoo Mill,TRK-FI-021,8428.08
+DEL-2023-0149,SUP-005,Clariant AG,2023-09-10,Coating Chemicals,9.0,A,Espoo Mill,TRK-FI-036,5278.63
+DEL-2023-0150,SUP-006,Fortum Oyj,2023-09-10,Electricity (MWh),527.9,B,Oulu Mill,TRK-FI-014,277120.12
+DEL-2023-0151,SUP-007,Cargotech AS,2023-09-10,Logistics Service,1.0,B,Turku Mill,TRK-FI-035,759.16
+DEL-2023-0152,SUP-005,Clariant AG,2023-09-13,Coating Chemicals,7.0,A,Oulu Mill,TRK-FI-044,1734.65
+DEL-2023-0153,SUP-008,Baltic Timber SIA,2023-09-13,Softwood Logs,472.0,B,Oulu Mill,TRK-FI-018,330342.67
+DEL-2023-0154,SUP-002,UPM Silvesta Oy,2023-09-16,Hardwood Pulp,183.3,A,Espoo Mill,TRK-FI-010,55909.11
+DEL-2023-0155,SUP-003,Pölkky Oy,2023-09-16,Softwood Pulp,236.8,B,Espoo Mill,TRK-FI-028,110230.05
+DEL-2023-0156,SUP-004,Kemira Oyj,2023-09-16,Bleaching Chemicals,23.6,A,Turku Mill,TRK-FI-017,5632.85
+DEL-2023-0157,SUP-006,Fortum Oyj,2023-09-16,Electricity (MWh),1326.1,A,Tampere Mill,TRK-FI-032,1029665.57
+DEL-2023-0158,SUP-008,Baltic Timber SIA,2023-09-16,Softwood Logs,479.3,A,Turku Mill,TRK-FI-027,342058.03
+DEL-2023-0159,SUP-002,UPM Silvesta Oy,2023-09-19,Hardwood Pulp,265.1,A,Oulu Mill,TRK-FI-037,80438.43
+DEL-2023-0160,SUP-005,Clariant AG,2023-09-19,Coating Chemicals,13.3,B,Jyväskylä Mill,TRK-FI-006,4171.88
+DEL-2023-0161,SUP-006,Fortum Oyj,2023-09-19,Electricity (MWh),683.4,B,Turku Mill,TRK-FI-048,472241.16
+DEL-2023-0162,SUP-007,Cargotech AS,2023-09-19,Logistics Service,1.0,A,Espoo Mill,TRK-FI-007,291.71
+DEL-2023-0163,SUP-008,Baltic Timber SIA,2023-09-19,Softwood Logs,494.0,A,Turku Mill,TRK-FI-004,351177.17
+DEL-2023-0164,SUP-001,Metsä Forest Oy,2023-09-22,Softwood Pulp,332.5,B,Turku Mill,TRK-FI-031,167824.15
+DEL-2023-0165,SUP-002,UPM Silvesta Oy,2023-09-22,Hardwood Pulp,275.2,B,Oulu Mill,TRK-FI-046,106213.08
+DEL-2023-0166,SUP-003,Pölkky Oy,2023-09-22,Softwood Pulp,246.2,A,Jyväskylä Mill,TRK-FI-048,42500.55
+DEL-2023-0167,SUP-004,Kemira Oyj,2023-09-22,Bleaching Chemicals,24.1,A,Oulu Mill,TRK-FI-025,7577.98
+DEL-2023-0168,SUP-005,Clariant AG,2023-09-22,Coating Chemicals,14.6,A,Tampere Mill,TRK-FI-016,7266.3
+DEL-2023-0169,SUP-007,Cargotech AS,2023-09-22,Logistics Service,1.0,A,Turku Mill,TRK-FI-049,345.58
+DEL-2023-0170,SUP-008,Baltic Timber SIA,2023-09-22,Softwood Logs,342.1,B,Espoo Mill,TRK-FI-050,191705.74
+DEL-2023-0171,SUP-001,Metsä Forest Oy,2023-09-25,Softwood Pulp,390.5,A,Tampere Mill,TRK-FI-032,267523.18
+DEL-2023-0172,SUP-002,UPM Silvesta Oy,2023-09-25,Hardwood Pulp,203.7,B,Espoo Mill,TRK-FI-007,146642.57
+DEL-2023-0173,SUP-004,Kemira Oyj,2023-09-25,Bleaching Chemicals,17.6,A,Jyväskylä Mill,TRK-FI-036,10982.41
+DEL-2023-0174,SUP-006,Fortum Oyj,2023-09-25,Electricity (MWh),541.0,A,Oulu Mill,TRK-FI-042,302744.48
+DEL-2023-0175,SUP-007,Cargotech AS,2023-09-25,Logistics Service,1.0,A,Turku Mill,TRK-FI-008,524.28
+DEL-2023-0176,SUP-008,Baltic Timber SIA,2023-09-25,Softwood Logs,403.3,C,Oulu Mill,TRK-FI-044,282521.44
+DEL-2023-0177,SUP-001,Metsä Forest Oy,2023-09-28,Softwood Pulp,411.5,A,Oulu Mill,TRK-FI-044,131450.35
+DEL-2023-0178,SUP-002,UPM Silvesta Oy,2023-09-28,Hardwood Pulp,192.6,A,Tampere Mill,TRK-FI-012,80780.81
+DEL-2023-0179,SUP-003,Pölkky Oy,2023-09-28,Softwood Pulp,256.6,B,Jyväskylä Mill,TRK-FI-002,75932.21
+DEL-2023-0180,SUP-005,Clariant AG,2023-09-28,Coating Chemicals,11.3,B,Espoo Mill,TRK-FI-045,3151.27
+DEL-2023-0181,SUP-007,Cargotech AS,2023-09-28,Logistics Service,1.0,A,Oulu Mill,TRK-FI-024,207.89
+DEL-2023-0182,SUP-008,Baltic Timber SIA,2023-09-28,Softwood Logs,413.4,A,Jyväskylä Mill,TRK-FI-030,178941.5

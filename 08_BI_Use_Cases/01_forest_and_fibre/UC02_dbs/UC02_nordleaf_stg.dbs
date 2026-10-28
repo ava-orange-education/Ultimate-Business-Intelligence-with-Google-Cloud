@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  DBSchema Project: UC-02 Sustainable Sourcing Scorecard — Source Layer
+  Database  : Google BigQuery
+  Schema    : nordleaf_stg
+  Tables    : deliveries, suppliers
+  Relation  : deliveries.supplier_id → suppliers.supplier_id
+  UC        : UC-02 | Forest & Fibre — ESG
+  Purpose   : Defines the two STG tables joined in the EUDR compliance
+              query. Import into DBSchema via File > Open Project.
+-->
+<project name="UC02 - NordLeaf STG Source Schema" db="BigQuery" version="9.4.0" >
+
+  <schema name="nordleaf_stg" >
+
+    <!-- ═══════════════════════════════════════════════
+         TABLE: suppliers
+         Dimension — one row per fibre/material supplier.
+         Rating column drives certified_pct calculation.
+         ═══════════════════════════════════════════════ -->
+    <table name="suppliers" >
+      <column name="supplier_id"          type="STRING"    javaType="String"     size="50"   required="y" pk="y" />
+      <column name="supplier_name"        type="STRING"    javaType="String"     size="200"  required="y" />
+      <column name="country"              type="STRING"    javaType="String"     size="100"  />
+      <column name="supplier_type"        type="STRING"    javaType="String"     size="100"  />
+      <column name="contact_email"        type="STRING"    javaType="String"     size="255"  />
+      <column name="payment_terms"        type="STRING"    javaType="String"     size="100"  />
+      <column name="annual_contract_eur"  type="NUMERIC"   javaType="BigDecimal" />
+      <column name="active"               type="BOOL"      javaType="Boolean"    />
+      <column name="rating"               type="STRING"    javaType="String"     size="10"
+              descr="Supplier quality rating. A = certified/preferred. Used in ESG KPI." />
+      <column name="loaded_at"            type="TIMESTAMP" javaType="Timestamp"  />
+    </table>
+
+    <!-- ═══════════════════════════════════════════════
+         TABLE: deliveries
+         Fact — one row per inbound material delivery.
+         Joined to suppliers on supplier_id to derive
+         certification status and rated-supplier volume.
+         ═══════════════════════════════════════════════ -->
+    <table name="deliveries" >
+      <column name="delivery_id"      type="STRING"    javaType="String"  size="50"  required="y" pk="y" />
+      <column name="supplier_id"      type="STRING"    javaType="String"  size="50"
+              descr="FK → suppliers.supplier_id. JOIN key for certification lookup." />
+      <column name="supplier_name"    type="STRING"    javaType="String"  size="200" />
+      <column name="delivery_date"    type="DATE"      javaType="Date"    required="y"
+              descr="Used for DATE_TRUNC(quarter) grouping in compliance report." />
+      <column name="material_type"    type="STRING"    javaType="String"  size="100"
+              descr="Filtered to: Softwood Pulp, Hardwood Pulp, Softwood Logs." />
+      <column name="quantity_tons"    type="FLOAT64"   javaType="Double"
+              descr="Volume in metric tons. Summed to certified_tons / total_tons." />
+      <column name="quality_grade"    type="STRING"    javaType="String"  size="10"  />
+      <column name="mill_destination" type="STRING"    javaType="String"  size="100" />
+      <column name="truck_id"         type="STRING"    javaType="String"  size="50"  />
+      <column name="invoice_eur"      type="FLOAT64"   javaType="Double"
+              descr="Delivery cost in EUR. Summed to total_spend_eur in compliance report." />
+      <column name="loaded_at"        type="TIMESTAMP" javaType="Timestamp" />
+
+      <!-- Foreign key: deliveries → suppliers -->
+      <fk name="fk_deliveries_suppliers"
+          toSchema="nordleaf_stg"
+          toTable="suppliers"
+          deleteRule="RESTRICT"
+          updateRule="RESTRICT" >
+        <fk-column fromColumn="supplier_id" toColumn="supplier_id" />
+      </fk>
+    </table>
+
+  </schema>
+
+</project>

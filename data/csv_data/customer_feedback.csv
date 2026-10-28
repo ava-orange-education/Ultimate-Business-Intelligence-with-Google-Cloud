@@ -1,0 +1,16 @@
+feedback_id,customer_name,order_id,feedback_date,channel,rating,feedback_text,language,product_type
+FB-001,Helsinki Publishers Oy,ORD-2023-0001,2023-07-20,EMAIL,5,Excellent quality newsprint delivered on time. Very satisfied.,EN,Newsprint
+FB-002,Baltic Packaging AS,ORD-2023-0002,2023-07-18,WEB,4,Good kraft paper quality but delivery was one day late.,EN,Kraft Paper
+FB-003,Nordic Retail Group,ORD-2023-0003,2023-07-22,PHONE,2,Cardboard quality below expectations. Several defects found.,EN,Cardboard
+FB-004,Stockholm Paper AB,ORD-2023-0004,2023-07-19,PORTAL,5,Specialty paper was perfect for our premium product line.,EN,Specialty Paper
+FB-005,Copenhagen Print House,ORD-2023-0005,2023-07-21,EMAIL,3,Newsprint quality acceptable but brightness slightly lower than spec.,EN,Newsprint
+FB-006,Tampere Kirjapaino Oy,ORD-2023-0016,2023-07-25,EMAIL,5,Erinomainen laatu ja nopea toimitus. Suosittelemme NordLeafia.,FI,Newsprint
+FB-007,Berlin Media GmbH,ORD-2023-0007,2023-07-23,WEB,1,Very poor quality. Multiple rolls had tears and unacceptable brightness.,EN,Newsprint
+FB-008,Amsterdam Paper BV,ORD-2023-0008,2023-07-22,PORTAL,4,Tissue paper good quality. Packaging could be improved to prevent moisture.,EN,Tissue
+FB-009,Tallinn Box OÜ,ORD-2023-0009,2023-07-17,PHONE,5,Perfect cardboard delivery. Will definitely order again.,EN,Cardboard
+FB-010,Oslo Newspapers AS,ORD-2023-0010,2023-07-20,EMAIL,4,Good newsprint quality. Slight delay but communication was excellent.,EN,Newsprint
+FB-011,Warsaw Packaging Sp,ORD-2023-0006,2023-08-05,WEB,3,Kraft paper quality variable across rolls. Some rolls excellent some poor.,EN,Kraft Paper
+FB-012,Paris Presse SA,ORD-2023-0011,2023-08-12,EMAIL,5,Excellent newsprint quality consistent across all rolls. Perfect brightness.,EN,Newsprint
+FB-013,Madrid Embalajes SL,ORD-2023-0012,2023-08-15,PORTAL,4,Good cardboard but lead time was longer than expected.,EN,Cardboard
+FB-014,Milan Imballaggi SpA,ORD-2023-0013,2023-08-18,WEB,2,Tissue paper absorption rate below specification. Not acceptable for our use.,EN,Tissue
+FB-015,Lahti Packaging Oy,ORD-2023-0017,2023-09-02,EMAIL,5,Paras kartonkitoimitus ikinä. Laatu ylitti odotuksemme.,FI,Cardboard

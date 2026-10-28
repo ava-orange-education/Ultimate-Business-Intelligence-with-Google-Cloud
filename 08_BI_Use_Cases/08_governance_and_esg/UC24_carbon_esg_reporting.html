@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Carbon Footprint &amp; ESG Reporting – NordLeaf Analytics</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: #F0F4F1; color: #1a1a1a; }
+
+  header {
+    background: #1B4332; color: #fff;
+    padding: 0 32px; display: flex; align-items: center;
+    justify-content: space-between; min-height: 72px; gap: 16px;
+  }
+  .header-left { display: flex; align-items: center; gap: 14px; }
+  .header-brand { display: flex; flex-direction: column; }
+  .header-brand .subtitle { font-size: 11px; color: #74C69D; letter-spacing: 0.08em; text-transform: uppercase; }
+  .header-brand .title   { font-size: 20px; font-weight: 700; }
+  .header-right { text-align: right; font-size: 12px; color: #B7E4C7; }
+  .header-right .domain-badge {
+    display: inline-block; background: #2D6A4F; color: #D8F3DC;
+    border-radius: 4px; padding: 2px 8px; font-size: 11px; margin-bottom: 4px;
+  }
+
+  main { max-width: 1200px; margin: 0 auto; padding: 24px; }
+
+  h2.section-title {
+    font-size: 13px; font-weight: 600; color: #2D6A4F;
+    text-transform: uppercase; letter-spacing: 0.07em;
+    margin: 28px 0 12px; border-left: 3px solid #40916C; padding-left: 10px;
+  }
+
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 8px; }
+  .kpi-card {
+    background: #fff; border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: 20px 22px; display: flex; flex-direction: column; gap: 6px;
+  }
+  .kpi-label { font-size: 11px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 600; }
+  .kpi-value { font-size: 30px; font-weight: 700; color: #1B4332; line-height: 1; }
+  .kpi-value.good  { color: #27AE60; }
+  .kpi-value.amber { color: #E67E22; }
+  .kpi-sub { font-size: 12px; color: #9ca3af; }
+
+  .chart-card {
+    background: #fff; border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: 24px; margin-bottom: 20px;
+  }
+  .chart-card h3 { font-size: 15px; font-weight: 600; color: #1B4332; margin-bottom: 16px; }
+  .chart-wrapper { position: relative; height: 400px; }
+
+  .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    background: #F0F4F1; color: #2D6A4F; font-weight: 600;
+    text-align: left; padding: 10px 14px; font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    border-bottom: 2px solid #B7E4C7;
+  }
+  td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; color: #374151; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f9fafb; }
+
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .badge-on-track   { background: #D1FAE5; color: #065F46; }
+  .badge-improve    { background: #FEF9C3; color: #854D0E; }
+  .badge-off-track  { background: #FEE2E2; color: #991B1B; }
+
+  .yoy-good { color: #27AE60; font-weight: 700; }
+  .yoy-bad  { color: #C0392B; font-weight: 700; }
+
+  footer {
+    max-width: 1200px; margin: 8px auto 0; padding: 16px 24px;
+    font-size: 11px; color: #9ca3af; text-align: center;
+    border-top: 1px solid #D8F3DC;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+      <circle cx="18" cy="18" r="18" fill="#40916C"/>
+      <path d="M18 6 C10 10 8 20 18 30 C28 20 26 10 18 6Z" fill="#D8F3DC"/>
+      <line x1="18" y1="30" x2="18" y2="14" stroke="#1B4332" stroke-width="1.5"/>
+      <line x1="18" y1="22" x2="13" y2="18" stroke="#1B4332" stroke-width="1"/>
+      <line x1="18" y1="19" x2="23" y2="15" stroke="#1B4332" stroke-width="1"/>
+    </svg>
+    <div class="header-brand">
+      <span class="subtitle">NordLeaf Analytics</span>
+      <span class="title">Carbon Footprint &amp; ESG Reporting</span>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="domain-badge">Governance &amp; ESG · P1</div>
+    <div>Last updated: 2024-01-15 06:00 EET</div>
+  </div>
+</header>
+
+<main>
+
+  <h2 class="section-title">Key Performance Indicators</h2>
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Total CO₂e</div>
+      <div class="kpi-value" style="color:#2D6A4F;">4,820<span style="font-size:16px;color:#9ca3af"> t</span></div>
+      <div class="kpi-sub">Full year 2023</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Carbon Intensity</div>
+      <div class="kpi-value amber">0.31<span style="font-size:16px;color:#9ca3af"> t CO₂/t</span></div>
+      <div class="kpi-sub">Tonnes CO₂e per tonne paper</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">EU 2030 Target</div>
+      <div class="kpi-value good" style="font-size:22px;padding-top:6px;">ON TRACK</div>
+      <div class="kpi-sub">Below 0.35 t CO₂/t threshold</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Scope 3 Share</div>
+      <div class="kpi-value" style="color:#2D6A4F;">14.2<span style="font-size:16px;color:#9ca3af">%</span></div>
+      <div class="kpi-sub">Of total GHG emissions</div>
+    </div>
+  </div>
+
+  <!-- Chart 1: Stacked scope emissions -->
+  <h2 class="section-title">Monthly GHG Emissions by Scope — 2023</h2>
+  <div class="chart-card">
+    <h3>Scope 1 + Scope 2 + Scope 3 Emissions (CO₂e tonnes) — All Mills Combined</h3>
+    <div class="chart-wrapper">
+      <canvas id="uc24-scopeBar"></canvas>
+    </div>
+  </div>
+
+  <!-- Charts 2 + 3 -->
+  <h2 class="section-title">Carbon Intensity &amp; ESG Leaderboard</h2>
+  <div class="charts-grid">
+    <div class="chart-card">
+      <h3>Carbon Intensity Trend per Mill (t CO₂e / t paper) vs EU 2030 Target</h3>
+      <div class="chart-wrapper">
+        <canvas id="uc24-intensityLine"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h3>ESG KPIs Summary — Mill Performance</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Mill</th>
+            <th>Carbon Intensity</th>
+            <th>EU Status</th>
+            <th>Energy Intensity</th>
+            <th>YoY Reduction</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Tampere</strong></td>
+            <td>0.29 t CO₂/t</td>
+            <td><span class="badge badge-on-track">ON TRACK</span></td>
+            <td>711 kWh/t</td>
+            <td class="yoy-good">-3.2%</td>
+          </tr>
+          <tr>
+            <td><strong>Oulu</strong></td>
+            <td>0.32 t CO₂/t</td>
+            <td><span class="badge badge-on-track">ON TRACK</span></td>
+            <td>742 kWh/t</td>
+            <td class="yoy-good">-1.8%</td>
+          </tr>
+          <tr>
+            <td><strong>Turku</strong></td>
+            <td>0.35 t CO₂/t</td>
+            <td><span class="badge badge-improve">IMPROVEMENT NEEDED</span></td>
+            <td>767 kWh/t</td>
+            <td class="yoy-good">-0.5%</td>
+          </tr>
+          <tr>
+            <td><strong>Espoo</strong></td>
+            <td>0.33 t CO₂/t</td>
+            <td><span class="badge badge-on-track">ON TRACK</span></td>
+            <td>754 kWh/t</td>
+            <td class="yoy-good">-2.1%</td>
+          </tr>
+          <tr>
+            <td><strong>Jyväskylä</strong></td>
+            <td>0.38 t CO₂/t</td>
+            <td><span class="badge badge-off-track">OFF TRACK</span></td>
+            <td>780 kWh/t</td>
+            <td class="yoy-bad">+0.3%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+
+<footer>NordLeaf Analytics Platform · Powered by BigQuery &amp; Looker Studio · Confidential</footer>
+
+<script>
+Chart.defaults.font.family = "'Segoe UI', system-ui, sans-serif";
+Chart.defaults.color = '#6b7280';
+
+const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+// ── CHART 1 – Stacked Scope 1/2/3 bar ───────────────────────────────────────
+(function () {
+  new Chart(document.getElementById('uc24-scopeBar'), {
+    type: 'bar',
+    data: {
+      labels: months,
+      datasets: [
+        {
+          label: 'Scope 1 – Process Heat',
+          data: [420,410,430,415,435,440,430,420,432,438,428,435],
+          backgroundColor: '#1B4332'
+        },
+        {
+          label: 'Scope 2 – Electricity',
+          data: [185,182,188,183,190,192,187,182,189,192,186,189],
+          backgroundColor: '#40916C'
+        },
+        {
+          label: 'Scope 3 – Logistics',
+          data: [95,92,98,93,100,102,97,92,99,103,96,100],
+          backgroundColor: '#74C69D'
+        }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { boxWidth: 12, padding: 14 } },
+        tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y} t CO₂e` } }
+      },
+      scales: {
+        x: { stacked: true, grid: { display: false } },
+        y: {
+          stacked: true,
+          title: { display: true, text: 'CO₂e (tonnes)', color: '#6b7280', font: { size: 12 } },
+          grid: { color: 'rgba(0,0,0,0.04)' }
+        }
+      }
+    }
+  });
+}());
+
+// ── CHART 2 – Carbon intensity line per mill + EU target ─────────────────────
+(function () {
+  new Chart(document.getElementById('uc24-intensityLine'), {
+    type: 'line',
+    data: {
+      labels: months,
+      datasets: [
+        {
+          label: 'Tampere',
+          data: [0.28,0.29,0.28,0.29,0.30,0.29,0.28,0.29,0.30,0.29,0.28,0.29],
+          borderColor: '#1B4332', backgroundColor: 'transparent',
+          pointRadius: 3, borderWidth: 2, tension: 0.3
+        },
+        {
+          label: 'Oulu',
+          data: [0.32,0.31,0.33,0.32,0.33,0.34,0.32,0.31,0.33,0.34,0.32,0.33],
+          borderColor: '#2D6A4F', backgroundColor: 'transparent',
+          pointRadius: 3, borderWidth: 2, tension: 0.3
+        },
+        {
+          label: 'Turku',
+          data: [0.35,0.34,0.36,0.35,0.36,0.37,0.35,0.34,0.36,0.37,0.35,0.36],
+          borderColor: '#40916C', backgroundColor: 'transparent',
+          pointRadius: 3, borderWidth: 2, tension: 0.3
+        },
+        {
+          label: 'Espoo',
+          data: [0.33,0.32,0.34,0.33,0.34,0.35,0.33,0.32,0.34,0.35,0.33,0.34],
+          borderColor: '#74C69D', backgroundColor: 'transparent',
+          pointRadius: 3, borderWidth: 2, tension: 0.3
+        },
+        {
+          label: 'Jyväskylä',
+          data: [0.37,0.36,0.38,0.37,0.38,0.39,0.37,0.36,0.38,0.39,0.37,0.38],
+          borderColor: '#B7E4C7', backgroundColor: 'transparent',
+          pointRadius: 3, borderWidth: 2, tension: 0.3
+        },
+        {
+          label: 'EU 2030 Target (0.35)',
+          data: Array(12).fill(0.35),
+          borderColor: '#C0392B',
+          backgroundColor: 'transparent',
+          borderDash: [6,4], borderWidth: 2.5, pointRadius: 0, tension: 0
+        }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { position: 'bottom', labels: { boxWidth: 12, padding: 12 } },
+        tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)} t CO₂/t` } }
+      },
+      scales: {
+        x: { grid: { color: 'rgba(0,0,0,0.04)' } },
+        y: {
+          title: { display: true, text: 't CO₂e / t paper', color: '#6b7280', font: { size: 12 } },
+          min: 0.24, max: 0.44,
+          ticks: { callback: v => v.toFixed(2) },
+          grid: { color: 'rgba(0,0,0,0.04)' }
+        }
+      }
+    }
+  });
+}());
+</script>
+</body>
+</html>

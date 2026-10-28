@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  DBSchema Project: UC-02 Sustainable Sourcing Scorecard — Output Layer
+  Database  : Google BigQuery
+  Schema    : nordleaf_mgmt
+  View      : v_esg_sourcing_kpi
+  UC        : UC-02 | Forest & Fibre — ESG
+  Purpose   : Defines the annual ESG KPI view that surfaces to the
+              Board Report and Looker Studio sustainability dashboard.
+              Import into DBSchema via File > Open Project.
+-->
+<project name="UC02 - NordLeaf MGMT Output View" db="BigQuery" version="9.4.0" >
+
+  <schema name="nordleaf_mgmt" >
+
+    <!-- ═══════════════════════════════════════════════════════════
+         VIEW: v_esg_sourcing_kpi
+         Annual ESG KPI summary for the Board Report.
+         Consumers : Looker Studio ESG Dashboard, Sustainability team.
+         Refreshed : On demand (CREATE OR REPLACE VIEW — no schedule).
+         Source    : nordleaf_stg.deliveries JOIN nordleaf_stg.suppliers
+         ═══════════════════════════════════════════════════════════ -->
+    <view name="v_esg_sourcing_kpi" >
+
+      <!-- Output columns -->
+      <column name="year"                      type="INT64"   javaType="Long"
+              descr="Calendar year extracted from delivery_date." />
+      <column name="pct_from_rated_suppliers"  type="FLOAT64" javaType="Double"
+              descr="% of total fibre tons delivered by rating='A' suppliers. Target: 100%." />
+      <column name="total_fibre_tons"          type="FLOAT64" javaType="Double"
+              descr="Total fibre volume (Softwood Pulp, Hardwood Pulp, Softwood Logs) in tons." />
+      <column name="active_suppliers"          type="INT64"   javaType="Long"
+              descr="Count of distinct supplier_ids with deliveries in the year." />
+      <column name="avg_delivery_tons"         type="FLOAT64" javaType="Double"
+              descr="Average tons per individual delivery record." />
+      <column name="cost_per_ton_eur"          type="FLOAT64" javaType="Double"
+              descr="Total invoice_eur / total quantity_tons. Tracks unit procurement cost." />
+
+      <!-- View definition -->
+      <viewQuery><![CDATA[
+SELECT
+  EXTRACT(YEAR FROM d.delivery_date)                              AS year,
+  ROUND(
+    SUM(IF(s.rating = 'A', d.quantity_tons, 0))
+    / SUM(d.quantity_tons) * 100
+  , 1)                                                            AS pct_from_rated_suppliers,
+  ROUND(SUM(d.quantity_tons), 0)                                  AS total_fibre_tons,
+  COUNT(DISTINCT s.supplier_id)                                   AS active_suppliers,
+  ROUND(AVG(d.quantity_tons), 1)                                  AS avg_delivery_tons,
+  ROUND(SUM(d.invoice_eur) / SUM(d.quantity_tons), 2)            AS cost_per_ton_eur
+FROM `nordleaf_stg.deliveries` d
+LEFT JOIN `nordleaf_stg.suppliers` s USING (supplier_id)
+WHERE d.material_type IN ('Softwood Pulp', 'Hardwood Pulp', 'Softwood Logs')
+GROUP BY 1
+      ]]></viewQuery>
+
+    </view>
+
+  </schema>
+
+</project>

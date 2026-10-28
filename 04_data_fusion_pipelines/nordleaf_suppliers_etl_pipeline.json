@@ -1,0 +1,135 @@
+{
+  "name": "nordleaf-suppliers-etl",
+  "description": "Ingests NordLeaf supplier data from GCS CSV into BigQuery staging and DWH",
+  "artifact": {
+    "name": "cdap-data-pipeline",
+    "version": "6.9.2",
+    "scope": "SYSTEM"
+  },
+  "config": {
+    "resources": {
+      "memoryMB": 2048,
+      "virtualCores": 1
+    },
+    "driverResources": {
+      "memoryMB": 2048,
+      "virtualCores": 1
+    },
+    "connections": [
+      {"from": "GCS-Source-Suppliers", "to": "CSV-Parser"},
+      {"from": "CSV-Parser", "to": "Data-Validator"},
+      {"from": "Data-Validator", "to": "STG-BigQuery-Sink"},
+      {"from": "Data-Validator", "to": "DWH-BigQuery-Sink"},
+      {"from": "Data-Validator", "to": "Error-Table"}
+    ],
+    "stages": [
+      {
+        "name": "GCS-Source-Suppliers",
+        "plugin": {
+          "name": "GCSFile",
+          "type": "batchsource",
+          "label": "GCS Source - Suppliers",
+          "artifact": {"name": "google-cloud", "version": "0.21.0", "scope": "SYSTEM"},
+          "properties": {
+            "project": "nordleaf-project",
+            "path": "gs://nordleaf-raw-data/suppliers/*.csv",
+            "format": "csv",
+            "delimiter": ",",
+            "skipHeader": "true",
+            "referenceName": "nordleaf-suppliers-gcs"
+          }
+        },
+        "outputSchema": [
+          {"name": "supplier_id", "type": "string"},
+          {"name": "supplier_name", "type": "string"},
+          {"name": "country", "type": "string"},
+          {"name": "supplier_type", "type": "string"},
+          {"name": "contact_email", "type": "string"},
+          {"name": "payment_terms", "type": "string"},
+          {"name": "annual_contract_eur", "type": "double"},
+          {"name": "active", "type": "boolean"},
+          {"name": "rating", "type": "string"}
+        ]
+      },
+      {
+        "name": "CSV-Parser",
+        "plugin": {
+          "name": "Wrangler",
+          "type": "transform",
+          "label": "CSV Parser & Type Cast",
+          "properties": {
+            "directives": "parse-as-csv :body ',' true\nset-type :annual_contract_eur double\nset-type :active boolean\nfilter-rows-on empty-or-null-columns supplier_id",
+            "field": "*",
+            "threshold": "1",
+            "schema": "auto"
+          }
+        }
+      },
+      {
+        "name": "Data-Validator",
+        "plugin": {
+          "name": "JavaScript",
+          "type": "transform",
+          "label": "Data Validator",
+          "properties": {
+            "script": "function transform(input, emitter, context) {\n  var errors = [];\n  if (!input.supplier_id) errors.push('NULL supplier_id');\n  if (!input.supplier_name) errors.push('NULL supplier_name');\n  if (input.annual_contract_eur < 0) errors.push('Negative contract value');\n  if (errors.length > 0) {\n    input._error_reason = errors.join('; ');\n    emitter.emitError(input);\n  } else {\n    input._loaded_at = new Date().toISOString();\n    emitter.emit(input);\n  }\n}"
+          }
+        }
+      },
+      {
+        "name": "STG-BigQuery-Sink",
+        "plugin": {
+          "name": "BigQueryTable",
+          "type": "batchsink",
+          "label": "BigQuery STG Sink",
+          "properties": {
+            "project": "nordleaf-project",
+            "dataset": "nordleaf_stg",
+            "table": "suppliers",
+            "operation": "UPSERT",
+            "relationTableKey": "supplier_id",
+            "dedupeBy": "supplier_id",
+            "referenceName": "nordleaf-stg-suppliers"
+          }
+        }
+      },
+      {
+        "name": "DWH-BigQuery-Sink",
+        "plugin": {
+          "name": "BigQueryTable",
+          "type": "batchsink",
+          "label": "BigQuery DWH Sink (dim_supplier)",
+          "properties": {
+            "project": "nordleaf-project",
+            "dataset": "nordleaf_dwh",
+            "table": "dim_supplier",
+            "operation": "UPSERT",
+            "relationTableKey": "supplier_id",
+            "referenceName": "nordleaf-dwh-dim-supplier"
+          }
+        }
+      },
+      {
+        "name": "Error-Table",
+        "plugin": {
+          "name": "BigQueryTable",
+          "type": "batchsink",
+          "label": "Error Records Sink",
+          "properties": {
+            "project": "nordleaf-project",
+            "dataset": "nordleaf_mgmt",
+            "table": "pipeline_errors",
+            "operation": "INSERT",
+            "referenceName": "nordleaf-pipeline-errors"
+          }
+        }
+      }
+    ],
+    "schedule": "0 5 * * *",
+    "engine": "spark",
+    "properties": {
+      "system.spark.executor.instances": "2",
+      "system.spark.executor.memory": "2g"
+    }
+  }
+}

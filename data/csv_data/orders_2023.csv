@@ -1,0 +1,278 @@
+order_id,customer_name,order_date,delivery_date,product_type,quantity_tons,unit_price_eur,mill_origin,status,region
+ORD-2023-0001,Helsinki Publishers Oy,2023-07-01,2023-07-08,Kraft Paper,151.2,520.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0002,Tallinn Box OÜ,2023-07-01,2023-07-13,Newsprint,32.3,680.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0003,Amsterdam Paper BV,2023-07-01,2023-07-19,Tissue,51.8,920.0,Oulu Mill,DELIVERED,Western Europe
+ORD-2023-0004,Stockholm Paper AB,2023-07-01,2023-07-06,Cardboard,164.7,750.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0005,Tallinn Box OÜ,2023-07-03,2023-07-19,Newsprint,85.3,680.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0006,Copenhagen Print House,2023-07-03,2023-07-11,Newsprint,150.0,680.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0007,Berlin Media GmbH,2023-07-03,2023-07-19,Cardboard,168.4,750.0,Jyväskylä Mill,DELIVERED,Central Europe
+ORD-2023-0008,Milan Imballaggi SpA,2023-07-03,2023-07-15,Newsprint,23.5,680.0,Turku Mill,PENDING,Southern Europe
+ORD-2023-0009,Warsaw Packaging Sp,2023-07-03,2023-07-20,Kraft Paper,175.3,520.0,Turku Mill,DELIVERED,Central Europe
+ORD-2023-0010,Baltic Packaging AS,2023-07-03,2023-07-19,Cardboard,45.1,750.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0011,Warsaw Packaging Sp,2023-07-05,2023-07-17,Specialty Paper,64.9,1200.0,Turku Mill,IN_TRANSIT,Central Europe
+ORD-2023-0012,Amsterdam Paper BV,2023-07-05,2023-07-11,Newsprint,57.4,680.0,Turku Mill,DELIVERED,Western Europe
+ORD-2023-0013,Turku Press Oy,2023-07-05,2023-07-20,Newsprint,54.0,680.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0014,Lahti Packaging Oy,2023-07-05,2023-07-24,Specialty Paper,178.7,1200.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0015,Turku Press Oy,2023-07-07,2023-07-16,Specialty Paper,82.0,1200.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0016,Tallinn Box OÜ,2023-07-07,2023-07-16,Newsprint,174.3,680.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0017,Prague Packaging sro,2023-07-07,2023-07-24,Specialty Paper,125.3,1200.0,Espoo Mill,DELIVERED,Central Europe
+ORD-2023-0018,Vienna Papers GmbH,2023-07-07,2023-07-12,Specialty Paper,112.9,1200.0,Tampere Mill,DELIVERED,Central Europe
+ORD-2023-0019,Oslo Newspapers AS,2023-07-07,2023-07-22,Tissue,153.9,920.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0020,Vienna Papers GmbH,2023-07-09,2023-07-17,Kraft Paper,108.9,520.0,Turku Mill,IN_TRANSIT,Central Europe
+ORD-2023-0021,Helsinki Publishers Oy,2023-07-09,2023-07-18,Tissue,127.7,920.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0022,Tallinn Box OÜ,2023-07-09,2023-07-30,Tissue,191.4,920.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0023,Tampere Kirjapaino Oy,2023-07-09,2023-07-25,Specialty Paper,18.6,1200.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0024,Milan Imballaggi SpA,2023-07-09,2023-07-16,Kraft Paper,177.4,520.0,Tampere Mill,DELIVERED,Southern Europe
+ORD-2023-0025,Turku Press Oy,2023-07-11,2023-07-21,Specialty Paper,190.2,1200.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0026,Copenhagen Print House,2023-07-11,2023-07-22,Tissue,93.3,920.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0027,Lahti Packaging Oy,2023-07-11,2023-07-28,Kraft Paper,146.9,520.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0028,Paris Presse SA,2023-07-11,2023-07-23,Tissue,98.5,920.0,Oulu Mill,DELIVERED,Western Europe
+ORD-2023-0029,Turku Press Oy,2023-07-13,2023-07-19,Newsprint,146.0,680.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0030,Amsterdam Paper BV,2023-07-13,2023-07-20,Newsprint,174.0,680.0,Jyväskylä Mill,DELIVERED,Western Europe
+ORD-2023-0031,Lahti Packaging Oy,2023-07-13,2023-07-22,Specialty Paper,54.6,1200.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0032,Helsinki Publishers Oy,2023-07-13,2023-07-31,Kraft Paper,160.2,520.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0033,Madrid Embalajes SL,2023-07-15,2023-07-30,Newsprint,26.2,680.0,Tampere Mill,DELIVERED,Southern Europe
+ORD-2023-0034,Prague Packaging sro,2023-07-15,2023-07-24,Kraft Paper,114.2,520.0,Espoo Mill,DELIVERED,Central Europe
+ORD-2023-0035,Lahti Packaging Oy,2023-07-15,2023-07-22,Specialty Paper,61.2,1200.0,Espoo Mill,IN_TRANSIT,Northern Europe
+ORD-2023-0036,Amsterdam Paper BV,2023-07-15,2023-07-20,Tissue,33.1,920.0,Tampere Mill,CANCELLED,Western Europe
+ORD-2023-0037,Tampere Kirjapaino Oy,2023-07-15,2023-08-04,Kraft Paper,45.8,520.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0038,Turku Press Oy,2023-07-15,2023-07-25,Specialty Paper,182.0,1200.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0039,Helsinki Publishers Oy,2023-07-15,2023-08-03,Specialty Paper,64.1,1200.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0040,Tampere Kirjapaino Oy,2023-07-17,2023-07-23,Newsprint,153.4,680.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0041,Copenhagen Print House,2023-07-17,2023-08-07,Tissue,185.1,920.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0042,Berlin Media GmbH,2023-07-17,2023-07-27,Tissue,29.8,920.0,Tampere Mill,DELIVERED,Central Europe
+ORD-2023-0043,Lahti Packaging Oy,2023-07-17,2023-07-29,Kraft Paper,89.7,520.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0044,Stockholm Paper AB,2023-07-17,2023-08-07,Tissue,30.2,920.0,Turku Mill,CANCELLED,Northern Europe
+ORD-2023-0045,Helsinki Publishers Oy,2023-07-17,2023-08-01,Kraft Paper,138.9,520.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0046,Oslo Newspapers AS,2023-07-17,2023-07-31,Kraft Paper,139.3,520.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0047,Tallinn Box OÜ,2023-07-17,2023-07-25,Newsprint,16.7,680.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0048,Tallinn Box OÜ,2023-07-19,2023-08-02,Kraft Paper,96.1,520.0,Jyväskylä Mill,PENDING,Northern Europe
+ORD-2023-0049,Copenhagen Print House,2023-07-19,2023-08-02,Tissue,16.4,920.0,Tampere Mill,CANCELLED,Northern Europe
+ORD-2023-0050,Madrid Embalajes SL,2023-07-19,2023-07-27,Kraft Paper,63.9,520.0,Jyväskylä Mill,DELIVERED,Southern Europe
+ORD-2023-0051,Vienna Papers GmbH,2023-07-19,2023-08-03,Cardboard,126.9,750.0,Oulu Mill,DELIVERED,Central Europe
+ORD-2023-0052,Baltic Packaging AS,2023-07-19,2023-08-01,Cardboard,108.5,750.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0053,Stockholm Paper AB,2023-07-19,2023-07-25,Specialty Paper,168.4,1200.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0054,Warsaw Packaging Sp,2023-07-19,2023-08-01,Kraft Paper,132.9,520.0,Oulu Mill,DELIVERED,Central Europe
+ORD-2023-0055,Lahti Packaging Oy,2023-07-19,2023-07-24,Tissue,145.5,920.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0056,Turku Press Oy,2023-07-21,2023-07-27,Kraft Paper,94.5,520.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0057,Baltic Packaging AS,2023-07-21,2023-08-01,Newsprint,181.3,680.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0058,Madrid Embalajes SL,2023-07-21,2023-08-08,Cardboard,159.3,750.0,Jyväskylä Mill,DELIVERED,Southern Europe
+ORD-2023-0059,Oslo Newspapers AS,2023-07-21,2023-07-31,Kraft Paper,175.0,520.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0060,Tallinn Box OÜ,2023-07-21,2023-08-08,Cardboard,159.7,750.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0061,Milan Imballaggi SpA,2023-07-23,2023-08-11,Kraft Paper,166.1,520.0,Turku Mill,DELIVERED,Southern Europe
+ORD-2023-0062,Baltic Packaging AS,2023-07-23,2023-08-03,Kraft Paper,56.2,520.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0063,Tampere Kirjapaino Oy,2023-07-23,2023-08-05,Newsprint,193.9,680.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0064,Stockholm Paper AB,2023-07-23,2023-08-07,Specialty Paper,140.7,1200.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0065,Warsaw Packaging Sp,2023-07-25,2023-08-09,Cardboard,149.8,750.0,Espoo Mill,DELIVERED,Central Europe
+ORD-2023-0066,Tallinn Box OÜ,2023-07-25,2023-08-05,Tissue,36.4,920.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0067,Baltic Packaging AS,2023-07-25,2023-08-05,Specialty Paper,15.3,1200.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0068,Tampere Kirjapaino Oy,2023-07-25,2023-08-02,Cardboard,130.3,750.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0069,Oslo Newspapers AS,2023-07-25,2023-08-08,Specialty Paper,75.3,1200.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0070,Berlin Media GmbH,2023-07-25,2023-08-11,Specialty Paper,138.0,1200.0,Oulu Mill,DELIVERED,Central Europe
+ORD-2023-0071,Milan Imballaggi SpA,2023-07-27,2023-08-11,Tissue,127.2,920.0,Espoo Mill,DELIVERED,Southern Europe
+ORD-2023-0072,Helsinki Publishers Oy,2023-07-27,2023-08-06,Kraft Paper,109.6,520.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0073,Oslo Newspapers AS,2023-07-27,2023-08-08,Tissue,77.0,920.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0074,Copenhagen Print House,2023-07-27,2023-08-02,Kraft Paper,42.3,520.0,Oulu Mill,PENDING,Northern Europe
+ORD-2023-0075,Stockholm Paper AB,2023-07-27,2023-08-03,Tissue,172.2,920.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0076,Berlin Media GmbH,2023-07-27,2023-08-13,Tissue,51.0,920.0,Espoo Mill,DELIVERED,Central Europe
+ORD-2023-0077,Helsinki Publishers Oy,2023-07-29,2023-08-10,Tissue,100.9,920.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0078,Stockholm Paper AB,2023-07-29,2023-08-13,Specialty Paper,138.5,1200.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0079,Prague Packaging sro,2023-07-29,2023-08-17,Tissue,93.9,920.0,Oulu Mill,DELIVERED,Central Europe
+ORD-2023-0080,Lahti Packaging Oy,2023-07-29,2023-08-10,Specialty Paper,98.3,1200.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0081,Nordic Retail Group,2023-07-29,2023-08-10,Tissue,104.7,920.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0082,Amsterdam Paper BV,2023-07-31,2023-08-17,Kraft Paper,42.9,520.0,Oulu Mill,DELIVERED,Western Europe
+ORD-2023-0083,Tallinn Box OÜ,2023-07-31,2023-08-15,Newsprint,91.8,680.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0084,Paris Presse SA,2023-07-31,2023-08-18,Newsprint,53.3,680.0,Espoo Mill,CANCELLED,Western Europe
+ORD-2023-0085,Warsaw Packaging Sp,2023-07-31,2023-08-05,Tissue,190.0,920.0,Jyväskylä Mill,DELIVERED,Central Europe
+ORD-2023-0086,Lahti Packaging Oy,2023-07-31,2023-08-14,Newsprint,189.4,680.0,Espoo Mill,IN_TRANSIT,Northern Europe
+ORD-2023-0087,Baltic Packaging AS,2023-07-31,2023-08-12,Specialty Paper,114.6,1200.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0088,Tampere Kirjapaino Oy,2023-08-01,2023-08-10,Kraft Paper,170.5,520.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0089,Helsinki Publishers Oy,2023-08-01,2023-08-06,Specialty Paper,124.5,1200.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0090,Milan Imballaggi SpA,2023-08-01,2023-08-11,Kraft Paper,175.4,520.0,Tampere Mill,DELIVERED,Southern Europe
+ORD-2023-0091,Warsaw Packaging Sp,2023-08-01,2023-08-16,Cardboard,54.2,750.0,Turku Mill,DELIVERED,Central Europe
+ORD-2023-0092,Paris Presse SA,2023-08-01,2023-08-19,Specialty Paper,66.5,1200.0,Turku Mill,IN_TRANSIT,Western Europe
+ORD-2023-0093,Prague Packaging sro,2023-08-01,2023-08-07,Specialty Paper,18.6,1200.0,Turku Mill,DELIVERED,Central Europe
+ORD-2023-0094,Berlin Media GmbH,2023-08-01,2023-08-07,Newsprint,159.5,680.0,Tampere Mill,CANCELLED,Central Europe
+ORD-2023-0095,Helsinki Publishers Oy,2023-08-03,2023-08-14,Newsprint,119.3,680.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0096,Copenhagen Print House,2023-08-03,2023-08-11,Cardboard,46.0,750.0,Oulu Mill,PENDING,Northern Europe
+ORD-2023-0097,Amsterdam Paper BV,2023-08-03,2023-08-17,Newsprint,122.1,680.0,Jyväskylä Mill,DELIVERED,Western Europe
+ORD-2023-0098,Nordic Retail Group,2023-08-03,2023-08-14,Specialty Paper,88.4,1200.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0099,Tampere Kirjapaino Oy,2023-08-03,2023-08-17,Kraft Paper,33.9,520.0,Jyväskylä Mill,IN_TRANSIT,Northern Europe
+ORD-2023-0100,Baltic Packaging AS,2023-08-05,2023-08-23,Cardboard,17.3,750.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0101,Madrid Embalajes SL,2023-08-05,2023-08-24,Cardboard,132.6,750.0,Oulu Mill,DELIVERED,Southern Europe
+ORD-2023-0102,Prague Packaging sro,2023-08-05,2023-08-18,Tissue,193.6,920.0,Jyväskylä Mill,IN_TRANSIT,Central Europe
+ORD-2023-0103,Paris Presse SA,2023-08-05,2023-08-24,Tissue,158.3,920.0,Espoo Mill,IN_TRANSIT,Western Europe
+ORD-2023-0104,Warsaw Packaging Sp,2023-08-05,2023-08-17,Tissue,64.7,920.0,Tampere Mill,DELIVERED,Central Europe
+ORD-2023-0105,Turku Press Oy,2023-08-05,2023-08-24,Specialty Paper,60.1,1200.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0106,Tallinn Box OÜ,2023-08-05,2023-08-25,Specialty Paper,77.2,1200.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0107,Vienna Papers GmbH,2023-08-05,2023-08-18,Kraft Paper,80.6,520.0,Turku Mill,DELIVERED,Central Europe
+ORD-2023-0108,Tallinn Box OÜ,2023-08-07,2023-08-27,Tissue,155.3,920.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0109,Helsinki Publishers Oy,2023-08-07,2023-08-19,Newsprint,32.2,680.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0110,Berlin Media GmbH,2023-08-07,2023-08-23,Cardboard,137.8,750.0,Espoo Mill,DELIVERED,Central Europe
+ORD-2023-0111,Baltic Packaging AS,2023-08-07,2023-08-22,Cardboard,93.7,750.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0112,Stockholm Paper AB,2023-08-07,2023-08-19,Cardboard,71.7,750.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0113,Madrid Embalajes SL,2023-08-07,2023-08-17,Cardboard,37.1,750.0,Oulu Mill,DELIVERED,Southern Europe
+ORD-2023-0114,Tampere Kirjapaino Oy,2023-08-07,2023-08-28,Specialty Paper,66.2,1200.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0115,Amsterdam Paper BV,2023-08-07,2023-08-21,Newsprint,169.0,680.0,Oulu Mill,DELIVERED,Western Europe
+ORD-2023-0116,Helsinki Publishers Oy,2023-08-09,2023-08-18,Cardboard,144.0,750.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0117,Copenhagen Print House,2023-08-09,2023-08-29,Newsprint,121.2,680.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0118,Tallinn Box OÜ,2023-08-09,2023-08-22,Kraft Paper,193.6,520.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0119,Turku Press Oy,2023-08-09,2023-08-16,Newsprint,89.1,680.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0120,Vienna Papers GmbH,2023-08-09,2023-08-23,Newsprint,43.1,680.0,Tampere Mill,PENDING,Central Europe
+ORD-2023-0121,Tampere Kirjapaino Oy,2023-08-09,2023-08-27,Newsprint,118.2,680.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0122,Amsterdam Paper BV,2023-08-11,2023-08-17,Cardboard,120.2,750.0,Jyväskylä Mill,PENDING,Western Europe
+ORD-2023-0123,Lahti Packaging Oy,2023-08-11,2023-08-22,Newsprint,190.3,680.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0124,Milan Imballaggi SpA,2023-08-11,2023-08-21,Newsprint,44.1,680.0,Jyväskylä Mill,DELIVERED,Southern Europe
+ORD-2023-0125,Turku Press Oy,2023-08-11,2023-08-31,Newsprint,90.6,680.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0126,Vienna Papers GmbH,2023-08-11,2023-08-30,Cardboard,145.8,750.0,Tampere Mill,DELIVERED,Central Europe
+ORD-2023-0127,Copenhagen Print House,2023-08-11,2023-08-22,Cardboard,160.7,750.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0128,Oslo Newspapers AS,2023-08-11,2023-08-24,Kraft Paper,134.8,520.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0129,Berlin Media GmbH,2023-08-11,2023-08-25,Kraft Paper,161.6,520.0,Espoo Mill,DELIVERED,Central Europe
+ORD-2023-0130,Milan Imballaggi SpA,2023-08-13,2023-08-28,Newsprint,179.5,680.0,Jyväskylä Mill,DELIVERED,Southern Europe
+ORD-2023-0131,Tallinn Box OÜ,2023-08-13,2023-08-18,Newsprint,57.4,680.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0132,Tampere Kirjapaino Oy,2023-08-13,2023-09-01,Kraft Paper,102.0,520.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0133,Amsterdam Paper BV,2023-08-13,2023-09-02,Tissue,95.6,920.0,Tampere Mill,DELIVERED,Western Europe
+ORD-2023-0134,Baltic Packaging AS,2023-08-13,2023-08-21,Specialty Paper,76.7,1200.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0135,Oslo Newspapers AS,2023-08-13,2023-08-30,Specialty Paper,68.3,1200.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0136,Paris Presse SA,2023-08-15,2023-08-20,Specialty Paper,175.0,1200.0,Jyväskylä Mill,DELIVERED,Western Europe
+ORD-2023-0137,Tallinn Box OÜ,2023-08-15,2023-08-31,Newsprint,49.7,680.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0138,Turku Press Oy,2023-08-15,2023-08-26,Specialty Paper,155.6,1200.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0139,Baltic Packaging AS,2023-08-15,2023-09-04,Cardboard,96.1,750.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0140,Amsterdam Paper BV,2023-08-17,2023-08-25,Kraft Paper,198.6,520.0,Espoo Mill,CANCELLED,Western Europe
+ORD-2023-0141,Warsaw Packaging Sp,2023-08-17,2023-08-31,Kraft Paper,107.2,520.0,Jyväskylä Mill,DELIVERED,Central Europe
+ORD-2023-0142,Oslo Newspapers AS,2023-08-17,2023-09-06,Specialty Paper,169.4,1200.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0143,Tallinn Box OÜ,2023-08-17,2023-09-07,Kraft Paper,86.0,520.0,Oulu Mill,IN_TRANSIT,Northern Europe
+ORD-2023-0144,Helsinki Publishers Oy,2023-08-17,2023-09-04,Cardboard,157.9,750.0,Turku Mill,CANCELLED,Northern Europe
+ORD-2023-0145,Vienna Papers GmbH,2023-08-17,2023-08-22,Tissue,64.4,920.0,Turku Mill,DELIVERED,Central Europe
+ORD-2023-0146,Berlin Media GmbH,2023-08-17,2023-09-06,Tissue,122.3,920.0,Oulu Mill,DELIVERED,Central Europe
+ORD-2023-0147,Baltic Packaging AS,2023-08-17,2023-09-03,Specialty Paper,78.8,1200.0,Espoo Mill,CANCELLED,Northern Europe
+ORD-2023-0148,Amsterdam Paper BV,2023-08-19,2023-09-08,Specialty Paper,23.1,1200.0,Espoo Mill,DELIVERED,Western Europe
+ORD-2023-0149,Milan Imballaggi SpA,2023-08-19,2023-08-25,Kraft Paper,106.6,520.0,Oulu Mill,DELIVERED,Southern Europe
+ORD-2023-0150,Turku Press Oy,2023-08-19,2023-08-27,Tissue,76.4,920.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0151,Prague Packaging sro,2023-08-19,2023-08-28,Specialty Paper,17.8,1200.0,Espoo Mill,IN_TRANSIT,Central Europe
+ORD-2023-0152,Lahti Packaging Oy,2023-08-19,2023-09-01,Kraft Paper,28.8,520.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0153,Nordic Retail Group,2023-08-21,2023-08-28,Tissue,21.6,920.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0154,Paris Presse SA,2023-08-21,2023-08-28,Cardboard,199.5,750.0,Espoo Mill,PENDING,Western Europe
+ORD-2023-0155,Milan Imballaggi SpA,2023-08-21,2023-09-04,Newsprint,97.1,680.0,Tampere Mill,DELIVERED,Southern Europe
+ORD-2023-0156,Warsaw Packaging Sp,2023-08-21,2023-09-06,Newsprint,69.3,680.0,Espoo Mill,DELIVERED,Central Europe
+ORD-2023-0157,Lahti Packaging Oy,2023-08-21,2023-08-31,Tissue,91.2,920.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0158,Madrid Embalajes SL,2023-08-21,2023-09-02,Tissue,176.1,920.0,Espoo Mill,CANCELLED,Southern Europe
+ORD-2023-0159,Amsterdam Paper BV,2023-08-21,2023-09-03,Kraft Paper,58.0,520.0,Espoo Mill,DELIVERED,Western Europe
+ORD-2023-0160,Vienna Papers GmbH,2023-08-23,2023-09-06,Specialty Paper,189.9,1200.0,Espoo Mill,DELIVERED,Central Europe
+ORD-2023-0161,Oslo Newspapers AS,2023-08-23,2023-09-03,Specialty Paper,171.4,1200.0,Espoo Mill,IN_TRANSIT,Northern Europe
+ORD-2023-0162,Warsaw Packaging Sp,2023-08-23,2023-09-08,Newsprint,58.9,680.0,Jyväskylä Mill,DELIVERED,Central Europe
+ORD-2023-0163,Baltic Packaging AS,2023-08-23,2023-09-09,Cardboard,19.1,750.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0164,Tampere Kirjapaino Oy,2023-08-25,2023-09-05,Cardboard,55.5,750.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0165,Oslo Newspapers AS,2023-08-25,2023-08-31,Kraft Paper,131.2,520.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0166,Amsterdam Paper BV,2023-08-25,2023-09-03,Newsprint,122.2,680.0,Tampere Mill,CANCELLED,Western Europe
+ORD-2023-0167,Lahti Packaging Oy,2023-08-25,2023-09-04,Cardboard,153.3,750.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0168,Madrid Embalajes SL,2023-08-27,2023-09-15,Cardboard,163.8,750.0,Tampere Mill,DELIVERED,Southern Europe
+ORD-2023-0169,Lahti Packaging Oy,2023-08-27,2023-09-13,Kraft Paper,174.1,520.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0170,Tallinn Box OÜ,2023-08-27,2023-09-04,Specialty Paper,17.6,1200.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0171,Prague Packaging sro,2023-08-27,2023-09-12,Cardboard,123.1,750.0,Tampere Mill,DELIVERED,Central Europe
+ORD-2023-0172,Nordic Retail Group,2023-08-27,2023-09-11,Specialty Paper,19.6,1200.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0173,Copenhagen Print House,2023-08-27,2023-09-15,Newsprint,132.5,680.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0174,Amsterdam Paper BV,2023-08-27,2023-09-02,Newsprint,40.9,680.0,Turku Mill,PENDING,Western Europe
+ORD-2023-0175,Milan Imballaggi SpA,2023-08-27,2023-09-05,Newsprint,33.0,680.0,Espoo Mill,DELIVERED,Southern Europe
+ORD-2023-0176,Prague Packaging sro,2023-08-29,2023-09-14,Cardboard,21.1,750.0,Oulu Mill,DELIVERED,Central Europe
+ORD-2023-0177,Copenhagen Print House,2023-08-29,2023-09-06,Kraft Paper,173.3,520.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0178,Turku Press Oy,2023-08-29,2023-09-11,Cardboard,26.2,750.0,Oulu Mill,PENDING,Northern Europe
+ORD-2023-0179,Paris Presse SA,2023-08-29,2023-09-09,Specialty Paper,32.0,1200.0,Jyväskylä Mill,PENDING,Western Europe
+ORD-2023-0180,Baltic Packaging AS,2023-08-29,2023-09-10,Newsprint,160.6,680.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0181,Amsterdam Paper BV,2023-08-29,2023-09-09,Kraft Paper,27.7,520.0,Jyväskylä Mill,DELIVERED,Western Europe
+ORD-2023-0182,Oslo Newspapers AS,2023-08-29,2023-09-07,Kraft Paper,75.8,520.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0183,Berlin Media GmbH,2023-08-29,2023-09-11,Kraft Paper,197.7,520.0,Oulu Mill,DELIVERED,Central Europe
+ORD-2023-0184,Copenhagen Print House,2023-08-31,2023-09-05,Kraft Paper,123.9,520.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0185,Helsinki Publishers Oy,2023-08-31,2023-09-21,Kraft Paper,152.2,520.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0186,Madrid Embalajes SL,2023-08-31,2023-09-16,Specialty Paper,97.9,1200.0,Jyväskylä Mill,DELIVERED,Southern Europe
+ORD-2023-0187,Milan Imballaggi SpA,2023-08-31,2023-09-06,Specialty Paper,108.2,1200.0,Jyväskylä Mill,DELIVERED,Southern Europe
+ORD-2023-0188,Baltic Packaging AS,2023-09-01,2023-09-20,Newsprint,105.7,680.0,Tampere Mill,IN_TRANSIT,Northern Europe
+ORD-2023-0189,Tampere Kirjapaino Oy,2023-09-01,2023-09-08,Cardboard,127.5,750.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0190,Milan Imballaggi SpA,2023-09-01,2023-09-16,Tissue,116.4,920.0,Espoo Mill,PENDING,Southern Europe
+ORD-2023-0191,Berlin Media GmbH,2023-09-01,2023-09-22,Tissue,69.6,920.0,Jyväskylä Mill,DELIVERED,Central Europe
+ORD-2023-0192,Turku Press Oy,2023-09-03,2023-09-22,Kraft Paper,91.6,520.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0193,Berlin Media GmbH,2023-09-03,2023-09-18,Newsprint,72.8,680.0,Turku Mill,DELIVERED,Central Europe
+ORD-2023-0194,Prague Packaging sro,2023-09-03,2023-09-23,Kraft Paper,142.1,520.0,Tampere Mill,DELIVERED,Central Europe
+ORD-2023-0195,Amsterdam Paper BV,2023-09-03,2023-09-11,Newsprint,32.2,680.0,Turku Mill,IN_TRANSIT,Western Europe
+ORD-2023-0196,Baltic Packaging AS,2023-09-05,2023-09-21,Cardboard,126.1,750.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0197,Paris Presse SA,2023-09-05,2023-09-25,Kraft Paper,43.6,520.0,Oulu Mill,IN_TRANSIT,Western Europe
+ORD-2023-0198,Stockholm Paper AB,2023-09-05,2023-09-21,Cardboard,171.4,750.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0199,Berlin Media GmbH,2023-09-05,2023-09-23,Tissue,56.8,920.0,Jyväskylä Mill,PENDING,Central Europe
+ORD-2023-0200,Warsaw Packaging Sp,2023-09-05,2023-09-10,Tissue,128.5,920.0,Jyväskylä Mill,CANCELLED,Central Europe
+ORD-2023-0201,Lahti Packaging Oy,2023-09-05,2023-09-18,Cardboard,20.4,750.0,Turku Mill,CANCELLED,Northern Europe
+ORD-2023-0202,Vienna Papers GmbH,2023-09-05,2023-09-14,Cardboard,16.1,750.0,Jyväskylä Mill,DELIVERED,Central Europe
+ORD-2023-0203,Helsinki Publishers Oy,2023-09-05,2023-09-10,Newsprint,41.2,680.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0204,Milan Imballaggi SpA,2023-09-07,2023-09-22,Cardboard,72.7,750.0,Jyväskylä Mill,DELIVERED,Southern Europe
+ORD-2023-0205,Prague Packaging sro,2023-09-07,2023-09-13,Newsprint,43.8,680.0,Tampere Mill,DELIVERED,Central Europe
+ORD-2023-0206,Vienna Papers GmbH,2023-09-07,2023-09-26,Specialty Paper,104.8,1200.0,Espoo Mill,DELIVERED,Central Europe
+ORD-2023-0207,Warsaw Packaging Sp,2023-09-07,2023-09-25,Tissue,36.1,920.0,Tampere Mill,DELIVERED,Central Europe
+ORD-2023-0208,Nordic Retail Group,2023-09-07,2023-09-21,Tissue,105.0,920.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0209,Baltic Packaging AS,2023-09-09,2023-09-14,Cardboard,75.7,750.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0210,Helsinki Publishers Oy,2023-09-09,2023-09-21,Kraft Paper,38.9,520.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0211,Berlin Media GmbH,2023-09-09,2023-09-15,Cardboard,28.3,750.0,Espoo Mill,DELIVERED,Central Europe
+ORD-2023-0212,Copenhagen Print House,2023-09-09,2023-09-27,Newsprint,174.5,680.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0213,Stockholm Paper AB,2023-09-09,2023-09-26,Specialty Paper,68.6,1200.0,Tampere Mill,PENDING,Northern Europe
+ORD-2023-0214,Milan Imballaggi SpA,2023-09-09,2023-09-28,Kraft Paper,163.2,520.0,Turku Mill,DELIVERED,Southern Europe
+ORD-2023-0215,Nordic Retail Group,2023-09-09,2023-09-26,Newsprint,60.0,680.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0216,Vienna Papers GmbH,2023-09-09,2023-09-21,Cardboard,153.0,750.0,Turku Mill,DELIVERED,Central Europe
+ORD-2023-0217,Lahti Packaging Oy,2023-09-11,2023-09-20,Cardboard,80.0,750.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0218,Stockholm Paper AB,2023-09-11,2023-09-20,Cardboard,51.5,750.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0219,Berlin Media GmbH,2023-09-11,2023-09-30,Specialty Paper,100.8,1200.0,Jyväskylä Mill,DELIVERED,Central Europe
+ORD-2023-0220,Vienna Papers GmbH,2023-09-11,2023-09-26,Tissue,74.8,920.0,Oulu Mill,DELIVERED,Central Europe
+ORD-2023-0221,Vienna Papers GmbH,2023-09-13,2023-10-02,Newsprint,72.4,680.0,Tampere Mill,DELIVERED,Central Europe
+ORD-2023-0222,Oslo Newspapers AS,2023-09-13,2023-09-20,Cardboard,29.2,750.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0223,Tallinn Box OÜ,2023-09-13,2023-09-19,Specialty Paper,100.6,1200.0,Espoo Mill,CANCELLED,Northern Europe
+ORD-2023-0224,Lahti Packaging Oy,2023-09-13,2023-09-28,Tissue,135.6,920.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0225,Helsinki Publishers Oy,2023-09-13,2023-10-02,Kraft Paper,192.2,520.0,Tampere Mill,IN_TRANSIT,Northern Europe
+ORD-2023-0226,Warsaw Packaging Sp,2023-09-13,2023-09-20,Cardboard,196.7,750.0,Jyväskylä Mill,DELIVERED,Central Europe
+ORD-2023-0227,Tampere Kirjapaino Oy,2023-09-13,2023-10-02,Newsprint,60.8,680.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0228,Warsaw Packaging Sp,2023-09-15,2023-09-30,Tissue,24.7,920.0,Tampere Mill,DELIVERED,Central Europe
+ORD-2023-0229,Madrid Embalajes SL,2023-09-15,2023-09-29,Tissue,140.5,920.0,Turku Mill,DELIVERED,Southern Europe
+ORD-2023-0230,Lahti Packaging Oy,2023-09-15,2023-09-30,Tissue,176.6,920.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0231,Vienna Papers GmbH,2023-09-15,2023-09-29,Kraft Paper,184.6,520.0,Espoo Mill,DELIVERED,Central Europe
+ORD-2023-0232,Copenhagen Print House,2023-09-15,2023-10-02,Newsprint,72.3,680.0,Turku Mill,IN_TRANSIT,Northern Europe
+ORD-2023-0233,Berlin Media GmbH,2023-09-15,2023-10-03,Tissue,32.3,920.0,Jyväskylä Mill,DELIVERED,Central Europe
+ORD-2023-0234,Milan Imballaggi SpA,2023-09-15,2023-09-26,Cardboard,72.1,750.0,Turku Mill,CANCELLED,Southern Europe
+ORD-2023-0235,Turku Press Oy,2023-09-15,2023-09-24,Specialty Paper,50.5,1200.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0236,Lahti Packaging Oy,2023-09-17,2023-09-26,Cardboard,177.1,750.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0237,Turku Press Oy,2023-09-17,2023-09-27,Kraft Paper,48.5,520.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0238,Baltic Packaging AS,2023-09-17,2023-09-29,Cardboard,140.1,750.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0239,Paris Presse SA,2023-09-17,2023-09-29,Specialty Paper,58.3,1200.0,Turku Mill,PENDING,Western Europe
+ORD-2023-0240,Berlin Media GmbH,2023-09-19,2023-09-29,Tissue,112.6,920.0,Oulu Mill,IN_TRANSIT,Central Europe
+ORD-2023-0241,Madrid Embalajes SL,2023-09-19,2023-09-25,Kraft Paper,176.5,520.0,Espoo Mill,IN_TRANSIT,Southern Europe
+ORD-2023-0242,Vienna Papers GmbH,2023-09-19,2023-10-10,Tissue,187.8,920.0,Tampere Mill,DELIVERED,Central Europe
+ORD-2023-0243,Amsterdam Paper BV,2023-09-19,2023-10-10,Kraft Paper,65.5,520.0,Oulu Mill,IN_TRANSIT,Western Europe
+ORD-2023-0244,Milan Imballaggi SpA,2023-09-19,2023-10-01,Newsprint,190.1,680.0,Espoo Mill,IN_TRANSIT,Southern Europe
+ORD-2023-0245,Copenhagen Print House,2023-09-19,2023-10-06,Newsprint,91.8,680.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0246,Turku Press Oy,2023-09-19,2023-10-05,Specialty Paper,199.0,1200.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0247,Paris Presse SA,2023-09-21,2023-10-11,Cardboard,184.7,750.0,Oulu Mill,DELIVERED,Western Europe
+ORD-2023-0248,Copenhagen Print House,2023-09-21,2023-09-26,Specialty Paper,98.0,1200.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0249,Lahti Packaging Oy,2023-09-21,2023-10-12,Kraft Paper,169.5,520.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0250,Helsinki Publishers Oy,2023-09-21,2023-09-29,Cardboard,59.0,750.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0251,Vienna Papers GmbH,2023-09-23,2023-10-02,Tissue,121.4,920.0,Turku Mill,DELIVERED,Central Europe
+ORD-2023-0252,Nordic Retail Group,2023-09-23,2023-10-11,Tissue,80.3,920.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0253,Stockholm Paper AB,2023-09-23,2023-10-09,Newsprint,111.8,680.0,Tampere Mill,PENDING,Northern Europe
+ORD-2023-0254,Prague Packaging sro,2023-09-23,2023-10-14,Tissue,108.9,920.0,Jyväskylä Mill,DELIVERED,Central Europe
+ORD-2023-0255,Amsterdam Paper BV,2023-09-23,2023-10-10,Specialty Paper,23.1,1200.0,Turku Mill,DELIVERED,Western Europe
+ORD-2023-0256,Oslo Newspapers AS,2023-09-23,2023-09-30,Newsprint,81.1,680.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0257,Tallinn Box OÜ,2023-09-23,2023-10-08,Newsprint,157.7,680.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0258,Helsinki Publishers Oy,2023-09-23,2023-10-03,Tissue,77.6,920.0,Espoo Mill,PENDING,Northern Europe
+ORD-2023-0259,Warsaw Packaging Sp,2023-09-25,2023-10-06,Cardboard,52.3,750.0,Tampere Mill,DELIVERED,Central Europe
+ORD-2023-0260,Copenhagen Print House,2023-09-25,2023-10-15,Cardboard,110.3,750.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0261,Nordic Retail Group,2023-09-25,2023-10-01,Kraft Paper,67.9,520.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0262,Madrid Embalajes SL,2023-09-25,2023-10-12,Cardboard,95.8,750.0,Espoo Mill,IN_TRANSIT,Southern Europe
+ORD-2023-0263,Milan Imballaggi SpA,2023-09-25,2023-10-05,Specialty Paper,77.7,1200.0,Espoo Mill,DELIVERED,Southern Europe
+ORD-2023-0264,Amsterdam Paper BV,2023-09-25,2023-10-16,Cardboard,186.0,750.0,Turku Mill,IN_TRANSIT,Western Europe
+ORD-2023-0265,Helsinki Publishers Oy,2023-09-25,2023-10-05,Specialty Paper,29.6,1200.0,Jyväskylä Mill,DELIVERED,Northern Europe
+ORD-2023-0266,Nordic Retail Group,2023-09-27,2023-10-15,Specialty Paper,126.5,1200.0,Oulu Mill,DELIVERED,Northern Europe
+ORD-2023-0267,Paris Presse SA,2023-09-27,2023-10-13,Cardboard,97.7,750.0,Jyväskylä Mill,PENDING,Western Europe
+ORD-2023-0268,Oslo Newspapers AS,2023-09-27,2023-10-03,Cardboard,133.3,750.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0269,Copenhagen Print House,2023-09-27,2023-10-07,Specialty Paper,82.2,1200.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0270,Vienna Papers GmbH,2023-09-29,2023-10-05,Cardboard,85.8,750.0,Jyväskylä Mill,DELIVERED,Central Europe
+ORD-2023-0271,Baltic Packaging AS,2023-09-29,2023-10-15,Specialty Paper,190.5,1200.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0272,Copenhagen Print House,2023-09-29,2023-10-15,Tissue,40.5,920.0,Espoo Mill,DELIVERED,Northern Europe
+ORD-2023-0273,Lahti Packaging Oy,2023-09-29,2023-10-07,Cardboard,61.2,750.0,Tampere Mill,DELIVERED,Northern Europe
+ORD-2023-0274,Stockholm Paper AB,2023-09-29,2023-10-07,Specialty Paper,110.8,1200.0,Turku Mill,DELIVERED,Northern Europe
+ORD-2023-0275,Milan Imballaggi SpA,2023-09-29,2023-10-13,Specialty Paper,54.7,1200.0,Espoo Mill,DELIVERED,Southern Europe
+ORD-2023-0276,Paris Presse SA,2023-09-29,2023-10-18,Kraft Paper,172.8,520.0,Oulu Mill,IN_TRANSIT,Western Europe
+ORD-2023-0277,Warsaw Packaging Sp,2023-09-29,2023-10-14,Specialty Paper,199.5,1200.0,Turku Mill,DELIVERED,Central Europe

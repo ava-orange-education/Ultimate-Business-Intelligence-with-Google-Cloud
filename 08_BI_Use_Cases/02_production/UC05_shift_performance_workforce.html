@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shift Performance & Workforce Analytics — NordLeaf Analytics</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #F0F4F1; font-family: 'Segoe UI', system-ui, sans-serif; color: #1a1a1a; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 32px 24px; }
+    .kpi-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+    .kpi-card { background: #fff; border-radius: 10px; padding: 20px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); min-width: 160px; flex: 1; }
+    .kpi-label { color: #6B7280; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .kpi-value { font-size: 28px; font-weight: 700; color: #1B4332; }
+    .kpi-sub { font-size: 12px; color: #40916C; margin-top: 4px; }
+    .kpi-sub.amber { color: #E67E22; }
+    .charts-row { display: grid; grid-template-columns: 1.6fr 1fr; gap: 20px; margin-bottom: 28px; }
+    .card { background: #fff; border-radius: 10px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .card-title { font-size: 14px; font-weight: 600; color: #1B4332; margin-bottom: 4px; }
+    .card-subtitle { font-size: 11px; color: #6B7280; margin-bottom: 16px; }
+    .chart-wrap { position: relative; height: 400px; }
+    table { width: 100%; border-collapse: collapse; }
+    thead th { background: #F0F4F1; color: #1B4332; font-size: 12px; text-transform: uppercase; letter-spacing: 0.8px; padding: 10px 14px; text-align: left; border-bottom: 2px solid #D8F3DC; }
+    tbody td { padding: 11px 14px; font-size: 13px; border-bottom: 1px solid #F0F4F1; color: #374151; }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover td { background: #F9FBF9; }
+    .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; letter-spacing: 0.4px; }
+    .badge-elite { background: #1B4332; color: #D8F3DC; }
+    .badge-high { background: #D1FAE5; color: #065F46; }
+    .badge-meets { background: #DBEAFE; color: #1E40AF; }
+    .badge-below { background: #FEF3C7; color: #92400E; }
+    .badge-critical { background: #FEE2E2; color: #991B1B; }
+    footer { text-align: center; padding: 20px; color: #6B7280; font-size: 12px; }
+    .section-gap { margin-bottom: 28px; }
+    .full-card { margin-bottom: 28px; }
+  </style>
+</head>
+<body>
+
+<header style="background:#1B4332;padding:14px 32px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 6px rgba(0,0,0,0.3)">
+  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="18" cy="18" r="18" fill="#40916C"/>
+    <path d="M18 6 C10 10 8 20 18 30 C28 20 26 10 18 6Z" fill="#D8F3DC"/>
+    <line x1="18" y1="30" x2="18" y2="14" stroke="#1B4332" stroke-width="1.5"/>
+    <line x1="18" y1="22" x2="13" y2="18" stroke="#1B4332" stroke-width="1"/>
+    <line x1="18" y1="19" x2="23" y2="15" stroke="#1B4332" stroke-width="1"/>
+  </svg>
+  <div>
+    <div style="color:#D8F3DC;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500">NordLeaf Analytics</div>
+    <div style="color:#fff;font-size:18px;font-weight:700;line-height:1.2">Shift Performance &amp; Workforce Analytics</div>
+  </div>
+  <div style="margin-left:auto;color:#74C69D;font-size:12px">Last updated: 2024-01-15 06:00 EET</div>
+</header>
+
+<div class="container">
+
+  <!-- KPI Row -->
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-label">Top Shift</div>
+      <div class="kpi-value" style="font-size:20px">Morning — Tampere</div>
+      <div class="kpi-sub">▲ 85.2% efficiency, Jan 2024</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">ELITE Shifts</div>
+      <div class="kpi-value">4</div>
+      <div class="kpi-sub">▲ Out of 15 tracked shifts</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">WoW Change</div>
+      <div class="kpi-value" style="color:#E67E22">-2.3%</div>
+      <div class="kpi-sub amber">▼ Week-over-week avg</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Avg Efficiency</div>
+      <div class="kpi-value">78.6%</div>
+      <div class="kpi-sub">▲ All shifts rolling 12-week</div>
+    </div>
+  </div>
+
+  <!-- Charts Row -->
+  <div class="charts-row section-gap">
+    <div class="card">
+      <div class="card-title">Weekly Efficiency % — 3 Shifts, Rolling 12 Weeks</div>
+      <div class="card-subtitle">Morning / Afternoon / Night — all mills averaged</div>
+      <div class="chart-wrap">
+        <canvas id="chartShiftLine"></canvas>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Actual vs Planned Tonnes per Shift — Last 4 Weeks</div>
+      <div class="card-subtitle">Morning / Afternoon / Night weekly production</div>
+      <div class="chart-wrap">
+        <canvas id="chartActualPlan"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shift Performance Tier Table -->
+  <div class="card full-card">
+    <div class="card-title">Performance Tier Matrix — Mill × Shift (January 2024)</div>
+    <div style="font-size:11px;color:#6B7280;margin-bottom:14px">
+      Tiers:
+      <span class="badge badge-elite" style="font-size:10px">ELITE ≥85%</span>&nbsp;
+      <span class="badge badge-high" style="font-size:10px">HIGH 80–84%</span>&nbsp;
+      <span class="badge badge-meets" style="font-size:10px">MEETS 70–79%</span>&nbsp;
+      <span class="badge badge-below" style="font-size:10px">BELOW 60–69%</span>&nbsp;
+      <span class="badge badge-critical" style="font-size:10px">CRITICAL &lt;60%</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Mill</th>
+          <th>Morning</th>
+          <th>Eff %</th>
+          <th>Afternoon</th>
+          <th>Eff %</th>
+          <th>Night</th>
+          <th>Eff %</th>
+          <th>Mill Avg</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Tampere</strong></td>
+          <td><span class="badge badge-elite">ELITE</span></td>
+          <td>85.2%</td>
+          <td><span class="badge badge-high">HIGH</span></td>
+          <td>81.4%</td>
+          <td><span class="badge badge-meets">MEETS</span></td>
+          <td>74.3%</td>
+          <td><strong>80.3%</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Oulu</strong></td>
+          <td><span class="badge badge-high">HIGH</span></td>
+          <td>80.1%</td>
+          <td><span class="badge badge-meets">MEETS</span></td>
+          <td>77.8%</td>
+          <td><span class="badge badge-meets">MEETS</span></td>
+          <td>71.2%</td>
+          <td><strong>76.4%</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Turku</strong></td>
+          <td><span class="badge badge-meets">MEETS</span></td>
+          <td>76.2%</td>
+          <td><span class="badge badge-meets">MEETS</span></td>
+          <td>73.5%</td>
+          <td><span class="badge badge-below">BELOW</span></td>
+          <td>64.8%</td>
+          <td><strong>71.5%</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Espoo</strong></td>
+          <td><span class="badge badge-elite">ELITE</span></td>
+          <td>86.0%</td>
+          <td><span class="badge badge-high">HIGH</span></td>
+          <td>82.3%</td>
+          <td><span class="badge badge-meets">MEETS</span></td>
+          <td>76.1%</td>
+          <td><strong>81.5%</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Jyväskylä</strong></td>
+          <td><span class="badge badge-meets">MEETS</span></td>
+          <td>77.4%</td>
+          <td><span class="badge badge-meets">MEETS</span></td>
+          <td>74.2%</td>
+          <td><span class="badge badge-below">BELOW</span></td>
+          <td>66.9%</td>
+          <td><strong>72.8%</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<footer>NordLeaf Analytics Platform · Powered by BigQuery &amp; Looker Studio · Confidential</footer>
+
+<script>
+  const WEEKS = ['Wk1','Wk2','Wk3','Wk4','Wk5','Wk6','Wk7','Wk8','Wk9','Wk10','Wk11','Wk12'];
+
+  // Chart 1: Line — Shift Efficiency 12 weeks
+  const ctx1 = document.getElementById('chartShiftLine').getContext('2d');
+  new Chart(ctx1, {
+    type: 'line',
+    data: {
+      labels: WEEKS,
+      datasets: [
+        {
+          label: 'Morning',
+          data: [81,82,80,83,82,84,83,82,81,83,84,85],
+          borderColor: '#1B4332',
+          backgroundColor: '#1B433218',
+          borderWidth: 2.5,
+          pointRadius: 3,
+          pointBackgroundColor: '#1B4332',
+          tension: 0.35,
+          fill: false
+        },
+        {
+          label: 'Afternoon',
+          data: [79,78,80,79,81,80,79,80,81,80,82,81],
+          borderColor: '#40916C',
+          backgroundColor: '#40916C18',
+          borderWidth: 2.5,
+          pointRadius: 3,
+          pointBackgroundColor: '#40916C',
+          tension: 0.35,
+          fill: false
+        },
+        {
+          label: 'Night',
+          data: [73,74,72,75,73,71,74,73,72,74,75,74],
+          borderColor: '#74C69D',
+          backgroundColor: '#74C69D18',
+          borderWidth: 2.5,
+          pointRadius: 3,
+          pointBackgroundColor: '#74C69D',
+          tension: 0.35,
+          fill: false
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'top', labels: { font: { size: 12 }, color: '#374151' } },
+        tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y}%` } }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: '#6B7280', font: { size: 11 } } },
+        y: {
+          min: 65,
+          max: 90,
+          grid: { color: '#F0F4F1' },
+          ticks: { color: '#6B7280', callback: v => v + '%' }
+        }
+      }
+    }
+  });
+
+  // Chart 2: Grouped bar — Actual vs Planned
+  const SHIFT_WEEKS = ['Wk49', 'Wk50', 'Wk51', 'Wk52'];
+  const ctx2 = document.getElementById('chartActualPlan').getContext('2d');
+  new Chart(ctx2, {
+    type: 'bar',
+    data: {
+      labels: SHIFT_WEEKS,
+      datasets: [
+        {
+          label: 'Morning Actual',
+          data: [420, 415, 430, 425],
+          backgroundColor: '#1B4332',
+          borderRadius: 3,
+          barPercentage: 0.7,
+          categoryPercentage: 0.75
+        },
+        {
+          label: 'Morning Planned',
+          data: [440, 440, 440, 440],
+          backgroundColor: '#1B433250',
+          borderRadius: 3,
+          barPercentage: 0.7,
+          categoryPercentage: 0.75
+        },
+        {
+          label: 'Afternoon Actual',
+          data: [390, 395, 385, 400],
+          backgroundColor: '#40916C',
+          borderRadius: 3,
+          barPercentage: 0.7,
+          categoryPercentage: 0.75
+        },
+        {
+          label: 'Night Actual',
+          data: [340, 335, 345, 350],
+          backgroundColor: '#74C69D',
+          borderRadius: 3,
+          barPercentage: 0.7,
+          categoryPercentage: 0.75
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { font: { size: 10 }, color: '#374151', boxWidth: 12 } },
+        tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y} t` } }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: '#6B7280' } },
+        y: {
+          min: 280,
+          grid: { color: '#F0F4F1' },
+          ticks: { color: '#6B7280', callback: v => v + ' t' }
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>

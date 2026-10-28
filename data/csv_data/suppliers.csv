@@ -1,0 +1,13 @@
+supplier_id,supplier_name,country,supplier_type,contact_email,payment_terms,annual_contract_eur,active,rating
+SUP-001,Metsä Forest Oy,Finland,Timber,metsaforest@metsagroup.com,NET30,4500000.00,true,A
+SUP-002,UPM Silvesta Oy,Finland,Timber,silvesta@upm.com,NET30,3800000.00,true,A
+SUP-003,Pölkky Oy,Finland,Timber,pulp@polkky.fi,NET45,2200000.00,true,B
+SUP-004,Kemira Oyj,Finland,Chemicals,kemira@kemira.com,NET30,1800000.00,true,A
+SUP-005,Clariant AG,Switzerland,Chemicals,paper@clariant.com,NET60,950000.00,true,B
+SUP-006,Fortum Oyj,Finland,Energy,industrialenergy@fortum.com,MONTHLY,6200000.00,true,A
+SUP-007,Cargotech AS,Norway,Logistics,nordleaf@cargotech.no,NET15,1100000.00,true,A
+SUP-008,Baltic Timber SIA,Latvia,Timber,orders@baltictimber.lv,NET45,1700000.00,true,B
+SUP-009,Sappi Biochemicals,Netherlands,Chemicals,biochem@sappi.com,NET30,720000.00,true,A
+SUP-010,VR Transpoint Oy,Finland,Logistics,transpoint@vr.fi,NET15,890000.00,true,A
+SUP-011,Ahlstrom Oyj,Finland,Specialty Fibers,ahlstrom@ahlstrom.com,NET45,580000.00,true,A
+SUP-012,ANDRITZ Oy,Finland,Machinery,service@andritz.fi,NET60,340000.00,true,B

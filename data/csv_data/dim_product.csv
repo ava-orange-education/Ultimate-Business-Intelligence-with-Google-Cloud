@@ -1,0 +1,6 @@
+product_key,product_type,product_category,grammage_gsm,width_mm,coating,is_recycled,certifications,is_active
+1,Newsprint,PRINTING,42,1500,Uncoated,false,FSC|PEFC,true
+2,Kraft Paper,PACKAGING,80,1200,Uncoated,false,FSC,true
+3,Cardboard,PACKAGING,200,1000,Uncoated,true,FSC|PEFC,true
+4,Specialty Paper,SPECIALTY,90,900,Coated,false,FSC|ISO9001,true
+5,Tissue,HYGIENE,18,2100,Uncoated,true,FSC|PEFC,true

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Timber Harvest vs Mill Consumption Balance — NordLeaf Analytics</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #F0F4F1; font-family: 'Segoe UI', system-ui, sans-serif; color: #1a1a1a; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 32px 24px; }
+    .kpi-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+    .kpi-card { background: #fff; border-radius: 10px; padding: 20px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); min-width: 160px; flex: 1; }
+    .kpi-label { color: #6B7280; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .kpi-value { font-size: 28px; font-weight: 700; color: #1B4332; }
+    .kpi-sub { font-size: 12px; color: #40916C; margin-top: 4px; }
+    .kpi-sub.red { color: #C0392B; }
+    .charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px; }
+    .card { background: #fff; border-radius: 10px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .card-title { font-size: 14px; font-weight: 600; color: #1B4332; margin-bottom: 18px; letter-spacing: 0.3px; }
+    .chart-wrap { position: relative; height: 400px; }
+    table { width: 100%; border-collapse: collapse; }
+    thead th { background: #F0F4F1; color: #1B4332; font-size: 12px; text-transform: uppercase; letter-spacing: 0.8px; padding: 10px 14px; text-align: left; border-bottom: 2px solid #D8F3DC; }
+    tbody td { padding: 12px 14px; font-size: 14px; border-bottom: 1px solid #F0F4F1; color: #374151; }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover td { background: #F9FBF9; }
+    .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; }
+    .badge-green { background: #D1FAE5; color: #065F46; }
+    .badge-blue { background: #DBEAFE; color: #1E40AF; }
+    .badge-amber { background: #FEF3C7; color: #92400E; }
+    .badge-red { background: #FEE2E2; color: #991B1B; }
+    footer { text-align: center; padding: 20px; color: #6B7280; font-size: 12px; }
+    .section-gap { margin-bottom: 28px; }
+  </style>
+</head>
+<body>
+
+<header style="background:#1B4332;padding:14px 32px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 6px rgba(0,0,0,0.3)">
+  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="18" cy="18" r="18" fill="#40916C"/>
+    <path d="M18 6 C10 10 8 20 18 30 C28 20 26 10 18 6Z" fill="#D8F3DC"/>
+    <line x1="18" y1="30" x2="18" y2="14" stroke="#1B4332" stroke-width="1.5"/>
+    <line x1="18" y1="22" x2="13" y2="18" stroke="#1B4332" stroke-width="1"/>
+    <line x1="18" y1="19" x2="23" y2="15" stroke="#1B4332" stroke-width="1"/>
+  </svg>
+  <div>
+    <div style="color:#D8F3DC;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500">NordLeaf Analytics</div>
+    <div style="color:#fff;font-size:18px;font-weight:700;line-height:1.2">Timber Harvest vs Mill Consumption Balance</div>
+  </div>
+  <div style="margin-left:auto;color:#74C69D;font-size:12px">Last updated: 2024-01-15 06:00 EET</div>
+</header>
+
+<div class="container">
+
+  <!-- KPI Row -->
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-label">Total Received</div>
+      <div class="kpi-value">48,320 t</div>
+      <div class="kpi-sub">▲ All 5 mills YTD</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Total Consumed</div>
+      <div class="kpi-value">45,890 t</div>
+      <div class="kpi-sub">▲ Production consumption</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Fibre Balance</div>
+      <div class="kpi-value" style="color:#27AE60">+2,430 t</div>
+      <div class="kpi-sub">▲ Net surplus in stock</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Cost per Ton</div>
+      <div class="kpi-value">€87.40</div>
+      <div class="kpi-sub">▼ -1.2% vs prior period</div>
+    </div>
+  </div>
+
+  <!-- Charts Row -->
+  <div class="charts-row section-gap">
+    <div class="card">
+      <div class="card-title">Monthly Fibre Received vs Consumed — All Mills (Aug–Jan)</div>
+      <div class="chart-wrap">
+        <canvas id="chartFibreBalance"></canvas>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Fibre Balance by Mill (tonnes)</div>
+      <div class="chart-wrap">
+        <canvas id="chartMillBalance"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Status Table -->
+  <div class="card section-gap">
+    <div class="card-title">Supply Status per Mill — January 2024</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Mill</th>
+          <th>Received (t)</th>
+          <th>Consumed (t)</th>
+          <th>Balance (t)</th>
+          <th>Days of Cover</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Tampere</strong></td>
+          <td>9,840</td>
+          <td>9,500</td>
+          <td style="color:#27AE60;font-weight:600">+340</td>
+          <td>18.2</td>
+          <td><span class="badge badge-green">ADEQUATE</span></td>
+        </tr>
+        <tr>
+          <td><strong>Oulu</strong></td>
+          <td>10,120</td>
+          <td>9,940</td>
+          <td style="color:#27AE60;font-weight:600">+180</td>
+          <td>16.8</td>
+          <td><span class="badge badge-green">ADEQUATE</span></td>
+        </tr>
+        <tr>
+          <td><strong>Turku</strong></td>
+          <td>8,970</td>
+          <td>9,060</td>
+          <td style="color:#C0392B;font-weight:600">-90</td>
+          <td>9.4</td>
+          <td><span class="badge badge-amber">LOW BUFFER</span></td>
+        </tr>
+        <tr>
+          <td><strong>Espoo</strong></td>
+          <td>10,440</td>
+          <td>10,120</td>
+          <td style="color:#27AE60;font-weight:600">+320</td>
+          <td>22.6</td>
+          <td><span class="badge badge-blue">SURPLUS</span></td>
+        </tr>
+        <tr>
+          <td><strong>Jyväskylä</strong></td>
+          <td>8,950</td>
+          <td>8,670</td>
+          <td style="color:#27AE60;font-weight:600">+280</td>
+          <td>17.4</td>
+          <td><span class="badge badge-green">ADEQUATE</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<footer>NordLeaf Analytics Platform · Powered by BigQuery &amp; Looker Studio · Confidential</footer>
+
+<script>
+  // Chart 1: Monthly Fibre Received vs Consumed
+  const ctx1 = document.getElementById('chartFibreBalance').getContext('2d');
+  new Chart(ctx1, {
+    type: 'bar',
+    data: {
+      labels: ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan'],
+      datasets: [
+        {
+          label: 'Received (t)',
+          data: [7800, 8200, 7950, 8400, 8100, 7870],
+          backgroundColor: '#2D6A4F',
+          borderRadius: 4,
+          barPercentage: 0.8,
+          categoryPercentage: 0.7
+        },
+        {
+          label: 'Consumed (t)',
+          data: [7400, 7900, 7600, 8100, 7700, 7190],
+          backgroundColor: '#74C69D',
+          borderRadius: 4,
+          barPercentage: 0.8,
+          categoryPercentage: 0.7
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'top', labels: { font: { size: 12 }, color: '#374151' } }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: '#6B7280' } },
+        y: {
+          beginAtZero: false,
+          min: 6500,
+          grid: { color: '#F0F4F1' },
+          ticks: { color: '#6B7280', callback: v => v.toLocaleString() }
+        }
+      }
+    }
+  });
+
+  // Chart 2: Fibre Balance by Mill (horizontal bar)
+  const millBalanceData = [340, 180, -90, 320, 280];
+  const ctx2 = document.getElementById('chartMillBalance').getContext('2d');
+  new Chart(ctx2, {
+    type: 'bar',
+    data: {
+      labels: ['Tampere', 'Oulu', 'Turku', 'Espoo', 'Jyväskylä'],
+      datasets: [{
+        label: 'Fibre Balance (t)',
+        data: millBalanceData,
+        backgroundColor: millBalanceData.map(v => v < 0 ? '#C0392B' : '#2D6A4F'),
+        borderRadius: 4,
+        barPercentage: 0.55
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false }
+      },
+      scales: {
+        x: {
+          grid: { color: '#F0F4F1' },
+          ticks: { color: '#6B7280', callback: v => (v >= 0 ? '+' : '') + v }
+        },
+        y: { grid: { display: false }, ticks: { color: '#374151', font: { weight: '500' } } }
+      }
+    }
+  });
+</script>
+</body>
+</html>

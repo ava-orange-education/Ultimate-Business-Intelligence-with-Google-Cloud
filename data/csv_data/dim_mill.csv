@@ -1,0 +1,6 @@
+mill_key,mill_id,mill_name,city,country,latitude,longitude,capacity_tons_day,founded_year,certifications,is_active
+1,MILL-TMP,Tampere Mill,Tampere,Finland,61.4978,23.7610,1200,1952,ISO9001|ISO14001|FSC,true
+2,MILL-OUL,Oulu Mill,Oulu,Finland,65.0121,25.4654,1800,1965,ISO9001|ISO14001|FSC,true
+3,MILL-TKU,Turku Mill,Turku,Finland,60.4518,22.2666,900,1938,ISO9001|FSC|PEFC,true
+4,MILL-ESP,Espoo Mill,Espoo,Finland,60.2052,24.6559,600,1978,ISO9001|ISO14001,true
+5,MILL-JYV,Jyväskylä Mill,Jyväskylä,Finland,62.2426,25.7209,1100,1971,ISO9001|FSC,true

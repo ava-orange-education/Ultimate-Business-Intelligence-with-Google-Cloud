@@ -1,0 +1,126 @@
+{
+  "name": "nordleaf-orders-batch-etl",
+  "description": "Daily batch ETL: GCS CSV orders -> STG -> DWH fact_orders with transformations",
+  "artifact": {
+    "name": "cdap-data-pipeline",
+    "version": "6.11.2",
+    "scope": "SYSTEM"
+  },
+  "config": {
+    "connections": [
+      {"from": "GCS-Orders-Source", "to": "Field-Transformer"},
+      {"from": "Field-Transformer", "to": "Deduplicator"},
+      {"from": "Deduplicator", "to": "STG-Orders-Sink"},
+      {"from": "Deduplicator", "to": "Joiner-Dim-Lookup"},
+      {"from": "Dim-Mill-Source", "to": "Joiner-Dim-Lookup"},
+      {"from": "Dim-Product-Source", "to": "Joiner-Dim-Lookup"},
+      {"from": "Joiner-Dim-Lookup", "to": "DWH-Fact-Orders-Sink"}
+    ],
+    "stages": [
+      {
+        "name": "GCS-Orders-Source",
+        "plugin": {
+          "name": "GCSFile",
+          "type": "batchsource",
+          "properties": {
+            "path": "gs://nordleaf-raw-data/orders/*.csv",
+            "format": "csv",
+            "skipHeader": "true",
+            "referenceName": "nordleaf-orders-gcs"
+          }
+        }
+      },
+      {
+        "name": "Field-Transformer",
+        "plugin": {
+          "name": "Wrangler",
+          "type": "transform",
+          "label": "Field Transformations",
+          "properties": {
+            "directives": "set-type :quantity_tons double\nset-type :unit_price_eur double\nset-column :total_value_eur multiply(:quantity_tons, :unit_price_eur)\nformat-date :order_date yyyy-MM-dd\nformat-date :delivery_date yyyy-MM-dd"
+          }
+        }
+      },
+      {
+        "name": "Deduplicator",
+        "plugin": {
+          "name": "Deduplicate",
+          "type": "transform",
+          "properties": {
+            "uniqueFields": "order_id",
+            "filterOperation": "last(loaded_at)"
+          }
+        }
+      },
+      {
+        "name": "Dim-Mill-Source",
+        "plugin": {
+          "name": "BigQueryTable",
+          "type": "batchsource",
+          "properties": {
+            "project": "nordleaf-project",
+            "dataset": "nordleaf_dwh",
+            "table": "dim_mill",
+            "referenceName": "nordleaf-dim-mill"
+          }
+        }
+      },
+      {
+        "name": "Dim-Product-Source",
+        "plugin": {
+          "name": "BigQueryTable",
+          "type": "batchsource",
+          "properties": {
+            "project": "nordleaf-project",
+            "dataset": "nordleaf_dwh",
+            "table": "dim_product",
+            "referenceName": "nordleaf-dim-product"
+          }
+        }
+      },
+      {
+        "name": "Joiner-Dim-Lookup",
+        "plugin": {
+          "name": "Joiner",
+          "type": "batchjoiner",
+          "label": "Dimension Key Lookup",
+          "properties": {
+            "joinType": "LEFT",
+            "joinKeys": "mill_origin=mill_name&product_type=product_type",
+            "selectedFields": "order_id,customer_name,order_date,delivery_date,quantity_tons,unit_price_eur,total_value_eur,status,mill_key,product_key"
+          }
+        }
+      },
+      {
+        "name": "STG-Orders-Sink",
+        "plugin": {
+          "name": "BigQueryTable",
+          "type": "batchsink",
+          "properties": {
+            "project": "nordleaf-project",
+            "dataset": "nordleaf_stg",
+            "table": "orders_raw",
+            "operation": "UPSERT",
+            "relationTableKey": "order_id"
+          }
+        }
+      },
+      {
+        "name": "DWH-Fact-Orders-Sink",
+        "plugin": {
+          "name": "BigQueryTable",
+          "type": "batchsink",
+          "properties": {
+            "project": "nordleaf-project",
+            "dataset": "nordleaf_dwh",
+            "table": "fact_orders",
+            "operation": "UPSERT",
+            "relationTableKey": "order_id"
+          }
+        }
+      }
+    ],
+    "schedule": "0 6 * * *",
+    "engine": "spark"
+  }
+}

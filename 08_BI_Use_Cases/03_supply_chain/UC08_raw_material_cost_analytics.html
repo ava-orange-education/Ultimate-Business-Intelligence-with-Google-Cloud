@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Raw Material Cost Analytics – NordLeaf Analytics</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #F0F4F1; color: #1a1a1a; }
+    .page-wrapper { max-width: 1200px; margin: 0 auto; padding: 28px 24px 48px; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+    .kpi-card { background: #fff; border-radius: 10px; padding: 20px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .kpi-label { color: #6B7280; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .kpi-value { font-size: 28px; font-weight: 700; color: #1B4332; }
+    .kpi-sub { font-size: 12px; color: #40916C; margin-top: 4px; }
+    .kpi-sub.amber { color: #E67E22; }
+    .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+    .chart-card { background: #fff; border-radius: 10px; padding: 22px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .chart-card.full { grid-column: 1 / -1; }
+    .chart-title { font-size: 14px; font-weight: 600; color: #1B4332; margin-bottom: 16px; letter-spacing: 0.3px; }
+    .chart-container { position: relative; height: 400px; }
+    footer { text-align: center; color: #6B7280; font-size: 11px; margin-top: 36px; padding-top: 16px; border-top: 1px solid #dce8df; }
+    .section-label { font-size: 12px; font-weight: 600; color: #40916C; text-transform: uppercase; letter-spacing: 1px; }
+  </style>
+</head>
+<body>
+
+<header style="background:#1B4332;padding:14px 32px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 6px rgba(0,0,0,0.3)">
+  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="18" cy="18" r="18" fill="#40916C"/>
+    <path d="M18 6 C10 10 8 20 18 30 C28 20 26 10 18 6Z" fill="#D8F3DC"/>
+    <line x1="18" y1="30" x2="18" y2="14" stroke="#1B4332" stroke-width="1.5"/>
+    <line x1="18" y1="22" x2="13" y2="18" stroke="#1B4332" stroke-width="1"/>
+    <line x1="18" y1="19" x2="23" y2="15" stroke="#1B4332" stroke-width="1"/>
+  </svg>
+  <div>
+    <div style="color:#D8F3DC;font-size:11px;letter-spacing:2px;text-transform:uppercase">NordLeaf Analytics</div>
+    <div style="color:#fff;font-size:18px;font-weight:700">Raw Material Cost &amp; Spend Analytics</div>
+  </div>
+  <div style="margin-left:auto;color:#74C69D;font-size:12px">Last updated: 2024-01-15 06:00 EET</div>
+</header>
+
+<div class="page-wrapper">
+  <p class="section-label" style="margin-bottom:16px">Supply Chain · UC-08 · Priority P1</p>
+
+  <!-- KPI Cards -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Total Spend (2023)</div>
+      <div class="kpi-value">€4.2M</div>
+      <div class="kpi-sub">▲ +5.3% YoY</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Avg Cost / Ton</div>
+      <div class="kpi-value">€89.30</div>
+      <div class="kpi-sub">▲ +2.8% vs prior year</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">MoM Change</div>
+      <div class="kpi-value" style="color:#E67E22">+2.1%</div>
+      <div class="kpi-sub amber">Dec vs Nov 2023</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Cost as % Revenue</div>
+      <div class="kpi-value">42.8%</div>
+      <div class="kpi-sub">Target: 40% — monitoring</div>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="charts-grid">
+    <div class="chart-card">
+      <div class="chart-title">Cost per Ton Trend by Material Type — 2023</div>
+      <div class="chart-container">
+        <canvas id="uc08LineChart"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Monthly Spend by Material Type (€ thousands)</div>
+      <div class="chart-container">
+        <canvas id="uc08StackedBar"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-card full" style="margin-bottom:0">
+    <div class="chart-title">Cost Bridge: Revenue vs Material Cost vs EBITDA (€ millions)</div>
+    <div class="chart-container" style="height:320px">
+      <canvas id="uc08Waterfall"></canvas>
+    </div>
+  </div>
+</div>
+
+<footer>NordLeaf Analytics Platform &nbsp;·&nbsp; Powered by BigQuery &amp; Looker Studio &nbsp;·&nbsp; Confidential</footer>
+
+<script>
+const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+// ── Chart 1: Line — cost per ton ──────────────────────────────────────────────
+new Chart(document.getElementById('uc08LineChart'), {
+  type: 'line',
+  data: {
+    labels: months,
+    datasets: [
+      { label: 'Softwood Pulp', data: [88,89,91,90,92,93,91,90,92,93,94,95], borderColor: '#1B4332', backgroundColor: 'transparent', tension: 0.3, pointRadius: 4, borderWidth: 2 },
+      { label: 'Hardwood Pulp', data: [76,77,78,79,78,80,79,81,80,82,81,83], borderColor: '#40916C', backgroundColor: 'transparent', tension: 0.3, pointRadius: 4, borderWidth: 2 },
+      { label: 'Chemicals',     data: [45,46,45,47,46,48,47,49,48,50,49,51], borderColor: '#74C69D', backgroundColor: 'transparent', tension: 0.3, pointRadius: 4, borderWidth: 2 },
+      { label: 'Energy',        data: [62,60,65,63,67,68,65,64,66,68,67,70], borderColor: '#E67E22', backgroundColor: 'transparent', tension: 0.3, pointRadius: 4, borderWidth: 2 },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom', labels: { font: { size: 11 }, boxWidth: 12, padding: 10 } },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: €${ctx.parsed.y}/ton` } }
+    },
+    scales: {
+      x: { grid: { color: '#e8efe9' } },
+      y: {
+        grid: { color: '#e8efe9' },
+        title: { display: true, text: '€ / ton', font: { size: 11 } }
+      }
+    }
+  }
+});
+
+// ── Chart 2: Stacked bar — monthly spend ──────────────────────────────────────
+new Chart(document.getElementById('uc08StackedBar'), {
+  type: 'bar',
+  data: {
+    labels: months,
+    datasets: [
+      { label: 'Softwood', data: [280,275,290,285,295,300,288,282,298,305,312,320], backgroundColor: '#1B4332', stack: 'spend' },
+      { label: 'Hardwood', data: [180,182,185,183,188,191,186,184,190,194,196,200], backgroundColor: '#40916C', stack: 'spend' },
+      { label: 'Chemicals', data: [90,92,88,94,91,96,93,97,94,99,97,102],           backgroundColor: '#74C69D', stack: 'spend' },
+      { label: 'Energy',    data: [120,115,125,118,130,133,126,122,128,135,131,138], backgroundColor: '#B7E4C7', stack: 'spend' },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom', labels: { font: { size: 11 }, boxWidth: 12, padding: 10 } },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: €${ctx.parsed.y}K` } }
+    },
+    scales: {
+      x: { stacked: true, grid: { display: false } },
+      y: { stacked: true, grid: { color: '#e8efe9' }, title: { display: true, text: '€ thousands', font: { size: 11 } } }
+    }
+  }
+});
+
+// ── Chart 3: Waterfall (floating bar) ─────────────────────────────────────────
+// Revenue=9.8M, Material cost=4.2M, Fixed cost=2.9M, EBITDA=2.7M
+// Waterfall: Revenue bar 0→9.8; Material cost bar 9.8→5.6 (drop); Fixed cost 5.6→2.7; EBITDA 0→2.7 highlight
+const wfData = {
+  labels: ['Revenue', 'Material Cost', 'Fixed Cost', 'EBITDA'],
+  // [start, end]
+  ranges: [[0, 9.8], [5.6, 9.8], [2.7, 5.6], [0, 2.7]],
+  colors: ['#2D6A4F', '#C0392B', '#E67E22', '#27AE60'],
+};
+
+new Chart(document.getElementById('uc08Waterfall'), {
+  type: 'bar',
+  data: {
+    labels: wfData.labels,
+    datasets: [{
+      label: 'Value (€M)',
+      data: wfData.ranges,
+      backgroundColor: wfData.colors,
+      borderRadius: 4,
+      borderSkipped: false,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => {
+            const [lo, hi] = ctx.raw;
+            const v = Math.abs(hi - lo).toFixed(1);
+            return ` €${v}M`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: { grid: { display: false } },
+      y: {
+        min: 0, max: 11,
+        grid: { color: '#e8efe9' },
+        title: { display: true, text: '€ millions', font: { size: 11 } }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
